@@ -12,8 +12,11 @@ Since they know the format of exchange they can be kepy modular and separate. Fl
 
 #### Statelessness:
 
-Th server does not need to know anything about what state the client is in and vice versa. They can understand any message receivedindepentently of previous messages..
+The server does not need to know anything about what state the client is in and vice versa. They can understand any message receivedindepentently of previous messages..
 
+#### REST uses Resources 
+
+Resources are the nouns of the Web, they describe any object, document, or thing that you may need to store or send to other services.
 # Node Initial Project
 
 ### Project Structure
