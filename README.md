@@ -1,5 +1,18 @@
+## What is REST?
 
+Architectural style providing standars between computer systems on the web facilitating communication with each other.
 
+REpresentational State Transfer
+
+#### Separation client/ server:
+
+The implementation of the client and the implementation of the server can be done independently without each knowing about the other. Each side can be changed independently without affecting the other side.
+
+Since they know the format of exchange they can be kepy modular and separate. Fleixibilty and scalability.
+
+#### Statelessness:
+
+Th server does not need to know anything about what state the client is in and vice versa. They can understand any message receivedindepentently of previous messages..
 
 # Node Initial Project
 
