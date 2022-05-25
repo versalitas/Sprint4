@@ -12,11 +12,37 @@ Since they know the format of exchange they can be kepy modular and separate. Fl
 
 #### Statelessness:
 
-The server does not need to know anything about what state the client is in and vice versa. They can understand any message receivedindepentently of previous messages..
-
+The server does not need to know anything about what state the client is in and vice versa. They can understand any message receivedindepentently of previous messages.
 #### REST uses Resources 
 
 Resources are the nouns of the Web, they describe any object, document, or thing that you may need to store or send to other services.
+
+#### REST architecture Communication Client / Server
+
+Clients send requests to retrieve or modify resources, and servers send responses to these requests.
+
+##### Requests consists of:
+- HTTP verb, which defines what kind of operation to perform
+- header, which allows the client to pass along info about the request
+- path to a resource
+- optional message body containing data
+
+##### HTTP Verbs
+
+**GET** — retrieve a specific resource (by id) or a collection of resources
+**POST** — create a new resource
+**PUT** — update a specific resource (by id)
+**DELETE** — remove a specific resource by id
+##### HEADER accept field
+
+Accept field : the type of content that the client is able to receive from the server. Consists of type and subtype separated by a slash. 
+**text:** text/html, text/css, text/plain
+**image:** image/png, image/jpeg, image/gif
+**audio:** audio/wav, audio/mpeg
+**video:** video/mp4, video/ogg
+**application** application/json, application/pdf, application/xml, application/octet-stream
+
+
 # Node Initial Project
 
 ### Project Structure
