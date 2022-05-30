@@ -55,6 +55,11 @@ Accept field : the type of content that the client is able to receive from the s
 500 (INTERNAL SERVER ERROR)	The generic answer for an unexpected failure if there is no more specific information available.
 
 
+npm install express --save
+
+npm install body-parser --save
+
+npm install connect-multiparty --save
 
 /////
 
