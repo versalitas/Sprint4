@@ -12,7 +12,7 @@ Since they know the format of exchange they can be kepy modular and separate. Fl
 
 #### Statelessness:
 
-The server does not need to know anything about what state the client is in and vice versa. They can understand any message receivedindepentently of previous messages.
+ Client and Server understand any message received indepentently of previous messages and respective state.
 #### REST uses Resources 
 
 Resources are the nouns of the Web, they describe any object, document, or thing that you may need to store or send to other services.
@@ -33,6 +33,7 @@ Clients send requests to retrieve or modify resources, and servers send response
 **POST** — create a new resource
 **PUT** — update a specific resource (by id)
 **DELETE** — remove a specific resource by id
+
 ##### HEADER accept field
 
 Accept field : the type of content that the client is able to receive from the server. Consists of type and subtype separated by a slash. 
@@ -41,6 +42,19 @@ Accept field : the type of content that the client is able to receive from the s
 **audio:** audio/wav, audio/mpeg
 **video:** video/mp4, video/ogg
 **application** application/json, application/pdf, application/xml, application/octet-stream
+
+##### STATUS code 
+
+
+200 (OK)	Standard response for successful HTTP requests.
+201 (CREATED)	Standard response for an HTTP request item successfully created.
+204 (NO CONTENT)	Standard response for successful HTTP requests, nothing returned in response body.
+400 (BAD REQUEST)	The request cannot be processed: bad request syntax, excessive size, or another client error.
+403 (FORBIDDEN)	The client does not have permission to access this resource.
+404 (NOT FOUND)	The resource could not be found at this time. It is possible it was deleted, or does not exist yet.
+500 (INTERNAL SERVER ERROR)	The generic answer for an unexpected failure if there is no more specific information available.
+
+
 
 /////
 
