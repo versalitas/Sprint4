@@ -42,7 +42,34 @@ Accept field : the type of content that the client is able to receive from the s
 **video:** video/mp4, video/ogg
 **application** application/json, application/pdf, application/xml, application/octet-stream
 
+/////
 
+sprint4
+Hints:
+
+the petition has to fetch the url. This can not be introduced as a string in the JSON. http requests url
+
+jason web token
+payload = the object stored in the data base with the info user
+
+jwt = payload encripted with (key + user password)
+
+jwt is what is saved in the db
+
+base de dates
+sequalize tiene que generar la inicialización de la base de datos: si hay una base drop si no crear
+
+pokemon
+const fetch = require('cross-fetch') let response = await 'api del pokemon con id' response.json;
+
+recibir petición de una api, hacer la bonita y volver a subirla.
+
+servidor
+separar servidor, que el frontend y el backend comunique
+
+vue o react
+vue se añade con script no hace falta instalar, menos farragoso
+////
 # Node Initial Project
 
 ### Project Structure
