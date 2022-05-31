@@ -6,8 +6,9 @@ var bodyParser = require("body-parser");
 let app = express();
 let user_routes = require("../routes/user");
 
-//middlewares or procedures to execute 
+//TODO middlewares or procedures to execute 
 //before receiving the petition 
+
 
 //configure headers
 

@@ -1,3 +1,25 @@
+## The task
+
+Level 1:
+
+-1 Create a server with express que returns a GET petition with and endpoint wit your name and the url from with the petition is being made.
+
+-2 Add an endpoint /upload , upload an archive of the type POST which returns a message if the extension is faulty.
+
+Level 2:
+
+-1 Create and endpoint /time that receives via POST
+a JSON with the current hour and date. Include a middleware that adds Cache-control, no cache. Use CORS in the answers, with middleware or express.
+
+-2 Add a middleware to the last endpoint that returns an HTTP Status 401 - unauthorized if the header of the petition doesn't return basic authentication.(User and password)
+
+Level 3:
+
+Create a GET petition at the endpoint  /pokemon/{id} 
+that receives a pokemon id and searches through th epokeapi and returns its name, heigth and weight.
+
+
+
 ## What is REST?
 
 Architectural style providing standars between computer systems on the web facilitating communication with each other.
