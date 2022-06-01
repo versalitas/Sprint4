@@ -1,6 +1,10 @@
 //importing dependencies
 
 const express = require('express');
+const currentUrl = 'http://localhost';
+//PORT defining as environmental variable
+// in terminal $export PORT=3001 or another value 
+const port = process.env.PORT || 3000;
 
 /*
 //converts the body of incoming requests to json
@@ -39,9 +43,7 @@ app.use(morgan('combined'));
 
 */ 
 
-//PORT defining as environmental variable
-// in terminal $export PORT=3001 or another value 
-const port = process.env.PORT || 3000;
+
   // starting the server
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
