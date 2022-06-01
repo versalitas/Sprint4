@@ -1,8 +1,15 @@
+
+install 
+
+npm i nodemon --save-dev
+
+run npx nodemon index
+
 ## The task
 
 Level 1:
 
--1 Create a server with express que returns a GET petition with and endpoint wit your name and the url from with the petition is being made.
+-1 Create a server with express que returns a GET petition with and endpoint with your name and the url from with the petition is being made.
 
 -2 Add an endpoint /upload , upload an archive of the type POST which returns a message if the extension is faulty.
 
