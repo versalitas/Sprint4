@@ -1,5 +1,5 @@
 {
-  "name": "nodeinitialdemo",
+  "name": "sprint4_1_REST_Api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.0",
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
