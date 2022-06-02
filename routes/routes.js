@@ -1,7 +1,9 @@
 
-const userRoutes = require('users.js');
+const userRoutes = require('./users.js');
+
 //route handling
-const appRouter = (app, fs) => {};
+const appRouter = (app, fs) => {
+
 
 // we've added in a default route here that handles empty routes
   // at the base API url
@@ -12,5 +14,6 @@ const appRouter = (app, fs) => {};
   // run our user route module here to complete the wire up
   userRoutes(app, fs);
 
+};
 
 module.exports = appRouter;
