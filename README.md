@@ -25,6 +25,20 @@ Level 3:
 Create a GET petition at the endpoint  /pokemon/{id} 
 that receives a pokemon id and searches through th epokeapi and returns its name, heigth and weight.
 
+## default project folder structure
+https://yudhajitadhikary.medium.com/how-to-create-routes-using-express-and-postman-5f200b3b85b6
+
+controllers: controller CRUD functions
+
+routes: endpoints
+
+data
+
+app.js: responsible for set up of express
+
+config.env: all the constant values
+
+
 
 
 ## What is REST?
