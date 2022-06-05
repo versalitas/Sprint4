@@ -38,6 +38,11 @@ app.js: responsible for set up of express
 
 config.env: all the constant values
 
+server.js runs the express application in the server 
+
+
+
+
 
 
 
