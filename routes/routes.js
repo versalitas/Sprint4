@@ -1,19 +1,9 @@
+const express = require('express');
+const app = require('../app.js');
+const user = require('../routes/user');
 
-const userRoutes = require('./users.js');
+const userRoutes = require('./user.js');
 
-//route handling
-const appRouter = (app, fs) => {
+app.use
 
-
-// we've added in a default route here that handles empty routes
-  // at the base API url
-  app.get('/', (req, res) => {
-    res.send('welcome to the development api-server');
-  });
-
-  // run our user route module here to complete the wire up
-  userRoutes(app, fs);
-
-};
-
-module.exports = appRouter;
+module.exports = 
