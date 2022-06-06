@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 //import routes
-let api_routes = require('./routes/user.js');
+let api_routes = require('./routes/users.js');
 
 //add middleware for handling json
 app.use(express.json());
