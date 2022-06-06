@@ -16,7 +16,7 @@ const getUser = (req, res) => {
     }
 }
 
-const 
+const uploadImage
 
 
 module.exports = {getUser, uploadImage};
