@@ -17,27 +17,8 @@ const getUser = (req, res) => {
 }
 
 
-//http://localhost:3001/api/users/images
 
-const uploadImage = (res, req) => {
-    try {  
-        //checks if 400 – Bad request
-        if (!req.files) return res.status(400).send({ status: "fail", message: "File not found"}); 
-        //check extensions let ext = ['img','jpg','jpeg', 'png', 'svg', 'gif]
-        //
-    
-    
-    
-          } catch (err) {
-            res.status(500).send({
-                status:"error", 
-                message: "pertinent error message"
-            })
-          }
-    
-    
-    }
     
 
 
-module.exports = {getUser};
+module.exports = getUser;

@@ -1,4 +1,5 @@
 //https://blog.logrocket.com/multer-nodejs-express-upload-file/
+//https://laratutorials.com/node-js-express-rest-api-image-upload-example/
 
 //http://localhost:3001/api/images
 
