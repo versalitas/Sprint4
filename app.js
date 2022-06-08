@@ -3,8 +3,7 @@
 const express = require("express");
 require('dotenv').config();
 //const cors = require('cors');
-const multer = require('multer');
-const upload = multer({dest: 'uploads/'});
+
 
 //initialize
 const app = express();
@@ -16,15 +15,6 @@ const port = process.env.PORT || 3001;
 
 
 
-
-const storage = multer.diskStorage({
-  destination: function(req, file, callback) {
-    callback(null, '/uploads');
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname);
-  }
-});
 
 
 
