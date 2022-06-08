@@ -5,18 +5,21 @@ const upload = multer({ dest: 'uploads/' })
 const uploadImage = require('../controllers/uploads.js');
 
 
+const path = require('path');
 
+
+//define disk storage
 const storage = multer.diskStorage({
-    destination: function(req, file, callback) {
-      callback(null, '/data');
-    },
-    filename: function (req, file, callback) {
-      callback(null, file.fieldname);
-    }
-  });
+  destination: function(req, file, cb) {
+    cb(null, 'uploads');
+  },
+  fileName: function (req, file, cb) {
+    cb(null, file.fieldname);
+  }
+});
 
 
-api.post('/uploads', upload.single(img), uploadImage);
+api.post('/uploads', upload.single('file'), uploadImage);
 
 
 

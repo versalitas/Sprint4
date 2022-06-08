@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require("express");
-require('dotenv').config();
+//require('dotenv').config();
 //const cors = require('cors');
 
 
@@ -12,33 +12,24 @@ const app = express();
 //settings
 const port = process.env.PORT || 3001;
 
-
-
-
-
-
-
 //import routes
 let api_routes = require('./routes/users.js');
 let uploads_routes = require('./routes/uploads.js');
 
+
+
 //enabling cors
-app.use(cors);
+//app.use(cors);
 //add middleware for handling json
 app.use(express.json());
 //app.use(express.static(path.join(__dirname, './data')));
 app.use(express.urlencoded({extended: false}));
-app.use(express.static(__dirname, 'public'));
-
-
-
-
-
+app.use('/public', express.static("public"));
 
 //base route
 
 app.use('/api', api_routes);
-app.use('/api/images', upload_routes);
+app.use('/api', uploads_routes);
 
 
 // starting the server
