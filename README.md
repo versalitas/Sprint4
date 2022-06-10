@@ -6,23 +6,24 @@ npm start
 
 ## The task
 
+Create a server with express
+
 Level 1:
 
--1 Create a server with express que returns a GET petition with and endpoint with your name and the url from with the petition is being made.
+-1 GET petition with and endpoint with your name and the url from where the petition is being made.
 
--2 Add an endpoint /upload , upload an archive of the type POST which returns a message if the extension is faulty.
+-2 POST petition with endpoint /upload an archive. Error message if extension faulty.
 
 Level 2:
 
--1 Create and endpoint /time that receives via POST
-a JSON with the current hour and date. Include a middleware that adds Cache-control, no cache. Use CORS in the answers, with middleware or express.
+-1 POST petition Endpoint /time that receives a JSON with the current hour and date. Include a middleware that adds Cache-control, no cache. Use CORS in the answers, with middleware or express.
 
 -2 Add a middleware to the last endpoint that returns an HTTP Status 401 - unauthorized if the header of the petition doesn't return basic authentication.(User and password)
 
 Level 3:
 
-Create a GET petition at the endpoint  /pokemon/{id} 
-that receives a pokemon id and searches through th epokeapi and returns its name, heigth and weight.
+Create a GET petition at the endpoint /pokemon/{id} 
+that receives a pokemon id and searches through the pokeapi and returns its name, heigth and weight.
 
 ## default project folder structure
 https://yudhajitadhikary.medium.com/how-to-create-routes-using-express-and-postman-5f200b3b85b6
