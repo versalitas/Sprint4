@@ -1,7 +1,7 @@
 'use strict'
 
 require('dotenv').config();
-const express = require("express");
+const express = require('express');
 //const cors = require('cors');
 
 //initialize server obj
@@ -21,9 +21,9 @@ let uploads_routes = require('./routes/uploads.js');
 //app.use(cors);
 //add middleware for handling json
 app.use(express.json());
-//app.use(express.static(path.join(__dirname, './data')));
-app.use(express.urlencoded({extended: false}));
-app.use('/public', express.static("public"));
+
+
+app.use('/public', express.static('public'));
 
 //base routes
 //level 1

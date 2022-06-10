@@ -3,16 +3,9 @@
 //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 //https://dev.to/thesameeric/how-to-validate-uploaded-files-in-node-js-2dc4
 
+const { path } = require('express/lib/application');
 const multer  = require('multer')
 
-
-//should this be required as a helper function?
-const validateExt = (fileName) =>
-{ const okExts = ['img','jpg', 'png', 'gif',];
-  const i = fileName.lastIndexOf('.');
-  const ext = fileName.substr(i);
-  return (i > -1 && okExts.includes(ext))? true: false;
-}
 
 const dir = './uploads';
 
@@ -22,41 +15,54 @@ const storage = multer.diskStorage({
     cb(null, dir);
   },
   fileName: function (req, file, cb) {
-    cb(null, file.fieldname);
+    const { originalname } = file;
+    const fileExtension = (originalname.match(/\.+[\S]+$/) || [])[0];
+    cb(null, `${file.fieldname}__${Date.now()}${fileExtension}`);
   }
 });
 
+//define multer middleware storage, limits, filter criteria
+const upload = multer({
+  storage :storage,
+  limits:{filesize : 1048576
+  },
+  filefilter: (req, file, cb) => {
+   const validExt = ['jpg', 'png', 'gif',];
+      if (!(validExt.includes(path.extname(file.originalname)))) {
+        return res.status(415).send({ status: 'fail', message: 'Unsupported Media Type'});
+      }
+       
+    const fileSize = parseInt(req.headers['content-length']);
+      if (fileSize > 1048576) {
+      return res.status(413).send({ status: 'fail', message: 'Entity too large'});
+    }
 
-const uploadImage = (req, res) => {
+    cb(null,true);
+   }
+})
+
+
+
+uploadControll = (req, res) => {
 try {  
     //checks if 400 – Bad request
-    if (!req.files) return res.status(400).send({ status: "fail", message: "File not found"}); 
-    
-    let isExtOk = validateExt(req.files);
-    //checks if file is an image
-    if(isExtOk){
-      res.status(200).send({status:"success", message:"File has successfully been uploaded"});
-
+    if (req.file == 'undefined'){
+      return res.status(400).send({ status: 'fail', message: 'File not found'}); 
     } else {
-     //returns error
-      return res.status(415).send({ status: "fail", message: "Unsupported Media Type"}); 
+
+      res.status(200).send({status:'success', name: file.originalname, message:'File has successfully been uploaded'});
     }
-  
-  
   } catch (err) {
     //returns major error message
     res.status(500).send({
-        status:"error", 
-        message: "Server doom. Please try later."
+        status:'error', 
+        message: 'Server armageddon. Sorry...'
     })
   }
 }     
 
 
 
- 
 
 
-
-
-module.exports = uploadImage;
+module.exports = {upload, uploadControll};
