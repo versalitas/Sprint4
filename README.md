@@ -48,19 +48,19 @@ server.js runs the express application in the server
 
 ## What is REST?
 
-Architectural style providing standars between computer systems on the web facilitating communication with each other.
+Architectural style of communication standards between computer systems on the web.
 
 REpresentational State Transfer
 
 #### Separation client/ server:
 
-The implementation of the client and the implementation of the server can be done independently without each knowing about the other. Each side can be changed independently without affecting the other side.
+Each side can be changed independently without affecting the other side.
 
 Since they know the format of exchange they can be kepy modular and separate. Fleixibilty and scalability.
 
 #### Statelessness:
 
- Client and Server understand any message received indepentently of previous messages and respective state.
+Client and Server understand any message received indepentently of previous messages and respective state.
 #### REST uses Resources 
 
 Resources are the nouns of the Web, they describe any object, document, or thing that you may need to store or send to other services.
@@ -93,26 +93,10 @@ Accept field : the type of content that the client is able to receive from the s
 
 ##### STATUS code 
 
-
-200 (OK)	Standard response for successful HTTP requests.
-201 (CREATED)	Standard response for an HTTP request item successfully created.
-204 (NO CONTENT)	Standard response for successful HTTP requests, nothing returned in response body.
-400 (BAD REQUEST)	The request cannot be processed: bad request syntax, excessive size, or another client error.
-403 (FORBIDDEN)	The client does not have permission to access this resource.
-404 (NOT FOUND)	The resource could not be found at this time. It is possible it was deleted, or does not exist yet.
-500 (INTERNAL SERVER ERROR)	The generic answer for an unexpected failure if there is no more specific information available.
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
 
-npm install express --save
-
-npm install body-parser --save
-
-npm install connect-multiparty --save
-
-/////
-
-sprint4
-
+sprint4 Omar hints...
 
 jason web token
 payload = the object stored in the data base with the info user
