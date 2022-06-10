@@ -1,9 +1,8 @@
 
 install 
-
-npm i nodemon --save-dev
-
-run npx nodemon index
+´´´
+npm start
+´´´
 
 ## The task
 
