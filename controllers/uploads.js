@@ -3,20 +3,32 @@
 //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 //https://dev.to/thesameeric/how-to-validate-uploaded-files-in-node-js-2dc4
 
+const multer  = require('multer')
 
 
 //should this be required as a helper function?
 const validateExt = (fileName) =>
-{ const okExts = ['img','jpg','jpeg', 'png', 'svg', 'gif',];
+{ const okExts = ['img','jpg', 'png', 'gif',];
   const i = fileName.lastIndexOf('.');
   const ext = fileName.substr(i);
   return (i > -1 && okExts.includes(ext))? true: false;
 }
 
+const dir = './uploads';
 
-const uploadImage = (res, req) => {
+//define disk storage
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, dir);
+  },
+  fileName: function (req, file, cb) {
+    cb(null, file.fieldname);
+  }
+});
+
+
+const uploadImage = (req, res) => {
 try {  
-    
     //checks if 400 – Bad request
     if (!req.files) return res.status(400).send({ status: "fail", message: "File not found"}); 
     
