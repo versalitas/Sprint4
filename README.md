@@ -1,8 +1,8 @@
 
 install 
-´´´
+```
 npm start
-´´´
+```
 
 ## The task
 
