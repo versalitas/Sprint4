@@ -1,5 +1,12 @@
 
-install 
+# Run Project
+
+Install dependencies with npm.
+```
+npm install
+```
+Run server. (Runs in port 3000 (.env) or 3001)
+
 ```
 npm start
 ```
@@ -37,13 +44,6 @@ data
 app.js: responsible for set up of express
 
 config.env: all the constant values
-
-server.js runs the express application in the server 
-
-
-
-
-
 
 
 ## What is REST?
