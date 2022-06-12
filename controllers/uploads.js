@@ -2,7 +2,7 @@
 const uploadControl = (req,res) =>{
   
   try{
-      res.status(200).send({
+      return res.status(200).send({
       status:"Success",
       message: "File successfully uploaded: "
     });
