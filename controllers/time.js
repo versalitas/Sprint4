@@ -1,10 +1,11 @@
 
-const getTime = () => {
+const getTime = (req,res) => {
     try{
     res.send({
-        status: "success",
+        status: "200",
+        message: "success",
         data:{
-            username: req.body.username,
+            //username: req.body.username,
             date: new Date()
         }
     });

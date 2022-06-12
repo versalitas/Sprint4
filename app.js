@@ -1,8 +1,10 @@
 'use strict'
 
+//https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html
+
 require('dotenv').config();
 const express = require('express');
-//const cors = require('cors');
+
 
 //initialize server obj
 const app = express();
@@ -15,14 +17,12 @@ const port = process.env.PORT || 3001;
 
 let api_routes = require('./routes/users.js');
 let uploads_routes = require('./routes/uploads.js');
+let time_routes = require('./routes/time.js');
 
 
-//enabling cors middleware
-app.use(cors());
+
 //add middleware for handling json
 app.use(express.json());
-
-
 app.use('/public', express.static('public'));
 
 //base routes
@@ -33,7 +33,7 @@ app.use('/api', uploads_routes);
 
 //level 2
 
-//app.use('/api', time_routes)
+app.use('/api', time_routes);
 
 
 
