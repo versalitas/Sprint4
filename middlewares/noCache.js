@@ -1,4 +1,3 @@
-//https://getridbug.com/node-js/no-cache-in-node-js-server/
 
 const noCache = (req, res, next) => {
     res.header('Cache-Control', 'no-cache');

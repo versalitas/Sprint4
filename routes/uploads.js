@@ -9,7 +9,7 @@ const {upload, uploadControl} = require('../controllers/uploads.js')
 
 
 //endpoint to upload file
-api.post('/uploads', upload.single('image'), uploadControl);
+api.post('/uploads', upload, uploadControl);
 
 
 
