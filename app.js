@@ -17,8 +17,8 @@ let api_routes = require('./routes/users.js');
 let uploads_routes = require('./routes/uploads.js');
 
 
-//enabling cors
-//app.use(cors);
+//enabling cors middleware
+app.use(cors());
 //add middleware for handling json
 app.use(express.json());
 
@@ -30,6 +30,14 @@ app.use('/public', express.static('public'));
 
 app.use('/api', api_routes);
 app.use('/api', uploads_routes);
+
+//level 2
+
+//app.use('/api', time_routes)
+
+
+
+
 
 
 // starting the server
