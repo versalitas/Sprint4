@@ -23,7 +23,8 @@ Level 1:
 
 Level 2:
 
--1 POST petition Endpoint /time that receives a JSON with the current hour and date. Include a middleware that adds Cache-control, no cache. Use CORS in the answers, with middleware or express.
+-1 POST petition Endpoint /time that receives a JSON with the current hour and date. Include a middleware that adds Cache-control: no-cache. Use CORS in the answer, with middleware or express.
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
 
 -2 Add a middleware to the last endpoint that returns an HTTP Status 401 - unauthorized if the header of the petition doesn't return basic authentication.(User and password)
 

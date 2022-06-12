@@ -6,58 +6,55 @@
 const { path } = require('express/lib/application');
 const multer  = require('multer')
 
-
 const dir = './uploads';
 
 //define disk storage
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
     cb(null, dir);
   },
-  fileName: function (req, file, cb) {
-    const { originalname } = file;
-    const fileExtension = (originalname.match(/\.+[\S]+$/) || [])[0];
-    cb(null, `${file.fieldname}__${Date.now()}${fileExtension}`);
+  fileName: (req, file, cb) => {
+   cb(null, file.originalname );
   }
 });
 
+
 //define multer middleware storage, limits, filter criteria
-const upload = multer({
-  storage :storage,
-  limits:{filesize : 1048576
+let upload = multer({
+  storage: storage,
+  limits: {fileSize : 1048576
   },
   filefilter: (req, file, cb) => {
-   const validExt = ['jpg', 'png', 'gif',];
-      if (!(validExt.includes(path.extname(file.originalname)))) {
-        return res.status(415).send({ status: 'fail', message: 'Unsupported Media Type'});
-      }
-       
-    const fileSize = parseInt(req.headers['content-length']);
-      if (fileSize > 1048576) {
-      return res.status(413).send({ status: 'fail', message: 'Entity too large'});
+    const validExt = ['jpg', 'png', 'gif',];
+      if (validExt.includes(file.mimetype)) {
+       cb(null,true); 
+     } else {
+      cb(new Error(415));
     }
-
-    cb(null,true);
-   }
+  }
 })
 
-
-
-uploadControll = (req, res) => {
+//controller function
+uploadControl = (req, res) => {
 try {  
     //checks if 400 – Bad request
     if (req.file == 'undefined'){
       return res.status(400).send({ status: 'fail', message: 'File not found'}); 
     } else {
-
-      res.status(200).send({status:'success', name: file.originalname, message:'File has successfully been uploaded'});
-    }
+      return res.status(200).send({status:'success', name: file.originalname, message:'File has successfully been uploaded'});
+    }   
   } catch (err) {
     //returns major error message
-    res.status(500).send({
+    if(err === 415){
+      return res.status(415).send({ status: 'fail', message: 'Unsupported Media Type'});
+    } else if (err.code == "LIMIT_FILE_SIZE"){
+      return res.status(413).send({ status: 'fail', message: 'Entity too large'});
+    } else {
+        return res.status(500).send({
         status:'error', 
         message: 'Server armageddon. Sorry...'
-    })
+    });
+    }
   }
 }     
 
@@ -65,4 +62,4 @@ try {
 
 
 
-module.exports = {upload, uploadControll};
+module.exports = {upload, uploadControl};
