@@ -4,8 +4,9 @@
 //https://dev.to/thesameeric/how-to-validate-uploaded-files-in-node-js-2dc4
 
 const { path } = require('express/lib/application');
+const res = require('express/lib/response');
 const multer  = require('multer')
-const maxSize = 1048576;
+const maxSize = 104857600000;
 
 const dir = '../public';
 
@@ -23,13 +24,15 @@ let storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
     
     const validMimes = [
-            'image/jpg', 
-            'image/png', 
-            'image/gif',];
-
+            "image/jpg", 
+            "image/png", 
+            "image/gif",
+          ];
+    
     if(validMimes.includes(file.mimetype)) return cb(null, true);
+    
 
-    return cb(new Error(415), false);
+    return cb(new Error('415'), false);
 };
 
 
@@ -47,10 +50,10 @@ let upload = (req, res, next) => { return multer({
     if (err instanceof multer.MulterError) return res.status(413).send({ status: 'fail', message: 'Entity too large'});
 
     // Invalid file extension, message returned from fileFilter callback
-    if (err) return res.status(415).send({ status: 'fail', message: 'Unsupported Media Type'});
+    if (err.message == '415') return res.status(415).send({ status: 'fail', message: 'Unsupported Media Type'});
 
     // file not selected
-    if (!req.file) returnres.status(400).send({ status: 'fail', message: 'File not found'}); 
+    if (!req.file) return res.status(400).send({ status: 'fail', message: 'File not found'}); 
 
     // SUCCESS
     next();

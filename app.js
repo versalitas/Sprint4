@@ -14,8 +14,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 //import routes
-
-let api_routes = require('./routes/users.js');
+let users_routes = require('./routes/users.js');
 let uploads_routes = require('./routes/uploads.js');
 let time_routes = require('./routes/time.js');
 
@@ -28,7 +27,7 @@ app.use('/public', express.static('public'));
 //base routes
 //level 1
 
-app.use('/api', api_routes);
+app.use('/api', users_routes);
 app.use('/api', uploads_routes);
 
 //level 2
