@@ -1,6 +1,7 @@
 const express = require('express');
 const api = express.Router();
 //require middleware and controllers
+
 const upload = require('../middlewares/multerMiddleware.js')
 const uploadControl = require('../controllers/uploads.js')
 

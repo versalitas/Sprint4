@@ -5,7 +5,7 @@
 
 const { path } = require('express/lib/application');
 const res = require('express/lib/response');
-const multer  = require('multer')
+const multer = require('multer');
 const maxSize = 3145728;
 
 const dir = '../public';
