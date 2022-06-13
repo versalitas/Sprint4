@@ -7,9 +7,7 @@ const noCache = require('../middlewares/noCache.js');
 
 //adding middleware
 
-api.use(cors());
-api.use(noCache);
-api.use
+
 
 
 
@@ -18,9 +16,9 @@ api.use
 
 //endpoint to get time
 api.post('/api',
-    //cors(),
-    //noCache,                         
-    //checkAuth
+    cors(),
+    noCache,                         
+    //checkAuth,
   getTime);
 
 

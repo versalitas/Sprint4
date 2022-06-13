@@ -30,15 +30,13 @@ const fileFilter = (req, file, cb) => {
           ];
     
     if(validMimes.includes(file.mimetype)) return cb(null, true);
-    
-
     return cb(new Error('415'), false);
 };
 
 
 //https://stackoverflow.com/questions/30838901/error-handling-when-uploading-file-using-multer-with-expressjs
 //define multer middleware storage, limits, filter criteria
-let upload = (req, res, next) => { return multer({
+let upload = (req, res, next) => {return multer({
   storage: storage,
   limits: {fileSize : maxSize},
   filefilter: fileFilter,
@@ -47,19 +45,18 @@ let upload = (req, res, next) => { return multer({
  // error handlers
     // file size error
     
-    if (err instanceof multer.MulterError) return res.status(413).send({ status: 'fail', message: 'Entity too large'});
+    if (err instanceof multer.MulterError) return res.status(413).send({status: 'fail', message: 'Entity too large'});
 
     // Invalid file extension, message returned from fileFilter callback
-    if (err.message == '415') return res.status(415).send({ status: 'fail', message: 'Unsupported Media Type'});
+    if (err.message == '415') return res.status(415).send({status: 'fail', message: 'Unsupported Media Type'});
 
     // file not selected
-    if (!req.file) return res.status(400).send({ status: 'fail', message: 'File not found'}); 
+    if (req.file == 'undefined') return res.status(400).send({status: 'fail', message: 'Oops! File not found'}); 
 
     // SUCCESS
     next();
   });
 }
-
 
 
 module.exports = upload;
