@@ -1,13 +1,16 @@
-
 # Run Project
 
 Install dependencies with npm.
-Add .env as .env.example
-Run server (Port 3000 or 3001)
+Change .env.example to .env
+Run server (runs from port 3000 or 3001)
 ```
 npm install
 npm start
 ```
+
+Check endpoints (the few that works... sob, sob)
+Postman_collection.json
+
 ## LEVEL 1
 
 http://localhost:3000/api/
@@ -28,6 +31,28 @@ response
 ```
 
 POST /uploads
+
+response
+
+```
+not working as expected... need a hint
+```
+
+POST/time
+
+```
+{
+    "date": "14/6/2022, 18:30:02"
+}
+
+```
+
+GET /pokemons/id
+
+```
+404... 
+
+```
 
 
 
