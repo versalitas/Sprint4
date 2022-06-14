@@ -1,1 +1,16 @@
-Error.
+const checkAuth = (req, res, next) => {
+    const { user, pass } = req.headers;
+    const { USER, PASS } = process.env;
+
+    if(user !== USER || password !== PASSWORD) {
+        res.status(401).send({
+            status:"Error", 
+            message:"Unauthorized access."
+        });
+        return;
+    }
+    next();
+}
+      
+    
+    

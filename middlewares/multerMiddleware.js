@@ -6,7 +6,8 @@
 
 const res = require('express/lib/response');
 const multer = require('multer');
-const maxSize = 3145728;
+
+const maxSize = 31457280;
 
 const dir = './public';
 
@@ -22,7 +23,7 @@ let storage = multer.diskStorage({
 
 //filterfunction
 const fileFilter = (req, file, cb) => {
-    
+
     const validMimes = [
             "image/jpg", 
             "image/jpeg",
@@ -30,13 +31,16 @@ const fileFilter = (req, file, cb) => {
             "image/gif",
           ];
     
-    if(validMimes.includes(file.mimetype)){ return cb(null, true);
+    if(validMimes.includes(file.mimetype)){return cb(null, true);
     } else {
-    req.fileValidationError = "415";
-    return cb(null, false ,req.fileValidationError);
-    }
+    
+    return cb(new Error('Unsupported Media Type'), false);
+   }
 };
 
+
+
+/*
 const upload = (req, res, next) => {return multer({
   storage: storage,
   limits: { fileSize: maxSize },
@@ -45,19 +49,20 @@ const upload = (req, res, next) => {return multer({
 
   // Error handlers
   // FILE SIZE LIMIT ERROR
-  if (err instanceof multer.MulterError) return res.status(413).end({status: 'fail', message: 'Entity too large'});
+  if (err instanceof multer.MulterError) return res.status(413).send({status: 'fail', message: 'Entity too large'});
 
   // INVALID FILE TYPE
-  if (req.fileValidationErrorr) return res.status(415).end({status: 'fail', message: 'Unsupported Media Type'});
+  if (req.fileValidationErrorr) return res.status(415).send({status: 'fail', message: 'Unsupported Media Type'});
 
   // FILE NOT SELECTED
-  if (!req.file) return res.status(400).end({status: 'fail', message: 'Oops! Upload a file!'});
+  if (!req.file) return res.status(400).send({status: 'fail', message: 'Oops! Upload a file!'});
 
   // SUCCESS
   next();
 });
 }
 
+*/
 
 
 
@@ -67,7 +72,6 @@ const upload = (req, res, next) => {return multer({
 
 
 
-/*
 //https://stackoverflow.com/questions/30838901/error-handling-when-uploading-file-using-multer-with-expressjs
 //define multer middleware storage, limits, filter criteria
 let upload = multer({
@@ -75,7 +79,7 @@ let upload = multer({
   limits: {fileSize : maxSize},
   filefilter: fileFilter,
 }).single('image');
-*/
+
 
 module.exports = upload;
 

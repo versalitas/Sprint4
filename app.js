@@ -19,6 +19,7 @@ const port = process.env.PORT || 3001;
 let users_routes = require('./routes/users.js');
 let uploads_routes = require('./routes/uploads.js');
 let time_routes = require('./routes/time.js');
+let poke_routes = require('./routes/pokemons.js');
 
 
 
@@ -35,6 +36,10 @@ app.use('/api', uploads_routes);
 //level 2
 
 app.use('/api', time_routes);
+
+//level 3
+
+app.use('./api', poke_routes);
 
 
 

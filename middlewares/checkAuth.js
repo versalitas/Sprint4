@@ -1,9 +1,10 @@
-//TODO
-//https://github.com/LionC/express-basic-auth/blob/master/index.js
+const basicAuth = require('express-basic-auth')
 
-const auth = require('basic-auth');
+const checkAuth = basicAuth({
+    users: { 'admin': 'qwerty' },
+    unauthorizedResponse: {status:"Error", 
+    message:"401 Unauthorized access."}
+    })
 
-const checkAuth = (res, req, next) => {
 
-
-   
+module.exports = checkAuth;
