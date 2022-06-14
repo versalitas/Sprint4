@@ -1,9 +1,13 @@
 
 const uploadControl = (req,res) =>{
   
-try{
-  //console.log("File response", req.file);
-  res.status(201).send({
+  if (req.file == 'undefined') return res.status(400).send({status: 'fail', message: 'Oops! File not found'});
+        
+  
+         // Invalid file extension, message returned from fileFilter callback
+  if (req.fileValidationError) return res.status(415).send({status: 'fail', message: 'Unsupported Media Type'});
+         
+    res.status(201).send({
     message: "File uploaded successfully!",
     file: req.file
 });
