@@ -1,21 +1,15 @@
 
 const getTime = (req,res) => {
-    try{
-    res.send({
-        status: "200",
-        message: "success",
-        data:{
-            //username: req.body.username,
-            date: new Date()
-        }
-    });
+    try {
+    res.status(200).send({
+         date: new Date().toLocaleString()
+        })
     } catch (err) {
     res.status(500).send({
         status: "error",
-        message: err.message
+        message: "Server doom!"
     });
   } 
 }
-
 
 module.exports = getTime;

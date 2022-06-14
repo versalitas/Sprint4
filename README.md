@@ -2,49 +2,34 @@
 # Run Project
 
 Install dependencies with npm.
+Add .env as .env.example
+Run server (Port 3000 or 3001)
 ```
 npm install
-```
-Run server. (Runs in port 3000 (.env) or 3001)
-
-```
 npm start
 ```
+## LEVEL 1
 
-## The task
+http://localhost:3000/api/
 
-Create a server with express
+endpoints:
 
-Level 1:
+GET  /users
 
--1 GET petition with and endpoint with your name and the url from where the petition is being made.
+response
 
--2 POST petition with endpoint /upload an archive. Error message if extension faulty.
+```
+{
+    "name": "Marie-Klara",
+    "age": "47",
+    "url": "http://localhost:3000/api/users"
+}
 
-Level 2:
+```
 
--1 POST petition Endpoint /time that receives a JSON with the current hour and date. Include a middleware that adds Cache-control: no-cache. Use CORS in the answer, with middleware or express.
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+POST /uploads
 
--2 Add a middleware to the last endpoint that returns an HTTP Status 401 - unauthorized if the header of the petition doesn't return basic authentication.(User and password)
 
-Level 3:
-
-Create a GET petition at the endpoint /pokemon/{id} 
-that receives a pokemon id and searches through the pokeapi and returns its name, heigth and weight.
-
-## default project folder structure
-https://yudhajitadhikary.medium.com/how-to-create-routes-using-express-and-postman-5f200b3b85b6
-
-controllers: controller CRUD functions
-
-routes: endpoints
-
-data
-
-app.js: responsible for set up of express
-
-config.env: all the constant values
 
 
 ## What is REST?

@@ -4,10 +4,12 @@
 
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 
 
 //initialize server obj
 const app = express();
+
 
 
 //settings
@@ -22,7 +24,7 @@ let time_routes = require('./routes/time.js');
 
 //add middleware for handling json
 app.use(express.json());
-app.use('/public', express.static('public'));
+app.use(express.static(path.join(__dirname, './public')));
 
 //base routes
 //level 1
