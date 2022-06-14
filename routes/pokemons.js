@@ -5,7 +5,7 @@ const getPokemon = require('../controllers/pokemons.js');
 
 
 
-api.get('/pokemon', getPokemon);
+api.get('/pokemons/:id', getPokemon);
 
 
 
