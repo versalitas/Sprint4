@@ -15,7 +15,7 @@ const port = process.env.API_PORT || 3001;
 //if(process.env.DB_DIALECT === 'mysql'){
   createDB();
 //} else {
-//  createMongoDB();
+// createMongoDB();
 //}
 
 
@@ -25,9 +25,7 @@ app.use(express.json());
 // Middlewares
 
 
-
 // Routes
-
 app.use('./api', allRoutes);
 
 // Starting the server
