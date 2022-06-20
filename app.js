@@ -1,7 +1,10 @@
-
 require('dotenv').config();
 const express = require('express');
-const createDB = require('./app/service/createDB.js')
+const createDB = require('./app/service/createDB.js');
+
+//requiering routes
+const allRoutes = require('./app/routes/allRoutes.js');
+
 
 const app = express();
 
@@ -9,7 +12,12 @@ const app = express();
 const port = process.env.API_PORT || 3001;
 
 //create DB if not exists
-createDB();
+//if(process.env.DB_DIALECT === 'mysql'){
+  createDB();
+//} else {
+//  createMongoDB();
+//}
+
 
 // Config
 app.use(express.json());
@@ -20,8 +28,7 @@ app.use(express.json());
 
 // Routes
 
-
-
+app.use('./api', allRoutes);
 
 // Starting the server
 const server = app.listen(port, () => {

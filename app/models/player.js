@@ -8,7 +8,8 @@ const sequelize = require('/index.js');
         primaryKey: true
         },
         playername: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: "ANONYMOUS"
         }
        },
        {

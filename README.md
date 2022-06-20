@@ -27,9 +27,9 @@ GET/players return list of alls Players with winPercentage
 POST /games/{id}: player(id) rolls the dice
 DELETE /games/{id}: delete all rolls of player
 GET /games/{id}: list of all rounds of player (id)
-GET /ranking: player ranking according to winPercentage, and winMedium
-GET /ranking/loser: return Player with less winPercentage
-GET /ranking/winner: return Player with best winPercentage
+GET /scores: player ranking according to winPercentage, and winMedium
+GET /scores/loser: return Player with less winPercentage
+GET /scores/winner: return Player with best winPercentage
 
 
 ### Project Structure

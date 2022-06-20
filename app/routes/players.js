@@ -1,11 +1,13 @@
 const express = require('express');
 const api = express.Router();
+const {createPlayer, modifyName, showPlayer} = require('../controllers/players.js');
 
 //TODO validation logic?
 
-api.get()
-api.post()
-api.put()
-api.delete()
+
+api.post('./players/:id', createPlayer);
+api.put('./players/:id', modifyName);
+api.get('./players/:id', showPlayer);
+
 
 module.exports = api;

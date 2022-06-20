@@ -4,17 +4,12 @@ const Sequelize = require('sequelize');
 // Export connection to database
 module.exports = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
-    dialect: 'mysql',
+    dialect: process.env.DB_DIALECT,
     port: process.env.DB_PORT
   });
 
 
-
-
-
-
-
-
+/*
 //https://www.npmjs.com/package/mysql2
 const configdb = require('../config/configdb.js');
 //get the client
@@ -32,13 +27,9 @@ const createDB = async () =>{
     })
     connection.end();
 }
+*/
 
 
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_NAME=game
-DB_PASS=enunlugardelamancha
 
 
 
