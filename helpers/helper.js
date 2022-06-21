@@ -8,9 +8,9 @@ const diceRoll = () => {
     let dice1 = randomizer();
     let dice2 = randomizer();
     const score = dice1 + dice2;
-    const isWinner = (score === 7)? true: false;
+    const win = (score === 7)? 100 : 0;
 
-    return {dice1, dice2, score, isWinner}
+    return {dice1, dice2, win}
     }
 
 module.exports = diceRoll;
