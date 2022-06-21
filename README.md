@@ -1,5 +1,7 @@
 Install npm.
-Convert .env.example to .env and if necessary change port
+
+Convert .env.example to .env and add if necessary pertinent variables.
+
 Run server.
 
 ```
