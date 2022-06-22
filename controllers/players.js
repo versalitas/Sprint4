@@ -58,11 +58,11 @@ const updatePlayer = async (req,res) => {
         if (!player) {
             return res.status(400).send({status: 'fail', message: 'Bad request: id not valid.'})
         }
-        //if req.body contains username
+        //if req.body contains new userName 
         if(!userName){
             return res.status(400).send({status: 'fail', message: 'Bad request: username not defined.'})
         }
-        //if userName is unique
+        //if new userName is unique
         const isUnique = await Players.findOne({where: {username: userName}});
 
         if(!isUnique){
