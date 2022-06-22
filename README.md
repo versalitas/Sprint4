@@ -6,29 +6,35 @@ Run server.
 npm install
 npm start
 ```
-TASK: Game with two dice. If the sum of the roll adds up to 7 = win.
-addPlayer: Player registers with unique name. Is assigned an id and register date. If no nome 
-showScores: numRolls, scoreDice1, scoreDice2, totalScore winPercentage
-deletePlayerScores
-showPlayers: playerName, winPercentage, winMedian
+TASK: 
+Game with two dice. 
 
+If the sum of the roll adds up to 7 = win.
 
 
 ENDPOINTS
 
 POST /players 
 create player with unique name or anonymous, adds id and register date.
+addPlayer (registers with unique name. Id and register date is assigned. If no name = "anonymous". 
 
 PUT /players/{id} 
 modify player name
+updatePlayer
 
 GET/players return list of alls Players with winPercentage
 
 POST /games/{id}: player(id) rolls the dice
+
 DELETE /games/{id}: delete all rolls of player
+
 GET /games/{id}: list of all rounds of player (id)
+
 GET /scores: player ranking according to winPercentage, and winMedium
+getPlayers: playerName, winPercentage, winMedian
+
 GET /scores/loser: return Player with less winPercentage
+
 GET /scores/winner: return Player with best winPercentage
 
 

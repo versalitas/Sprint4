@@ -3,24 +3,33 @@
 //https://stackoverflow.com/questions/31294562/sequelize-create-database/52915491#52915491
 
 const mysql = require('mysql2/promise');
+const {Sequelize} = require('sequelize');
 const dbName = process.env.DB_NAME /*|| "GAME"*/;
 
-const createDB = async() => { 
+const initDB = async() => { 
     
     const connection = await mysql.createConnection({
     host: process.env.DB_HOST /*|| "127.0.0.1"*/,
     port: process.env.DB_PORT /*|| "3306"*/,
     user: process.env.DB_USER /*|| "root"*/,
-    password : process.env.DB_PASSWORD /*|| "enunlugardelamancha"*/});
+    password: process.env.DB_PASSWORD /*|| "enunlugardelamancha"*/});
     
-    await connection.connect();
+    //await connection.connect();
     await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbName};`);
+
+    const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+        //host: process.env.DB_HOST,
+        dialect: process.env.DB_DIALECT,
+        //port: process.env.DB_PORT
+      });
     console.info("Database created or successfully checked");
-    await connection.end();
+    //await connection.end();
+
+    await sequelize.sync();
 };
 
 
-module.exports = createDB;
+module.exports = initDB;
 
 
 
@@ -61,4 +70,4 @@ const mysql = require('mysql2/promise');
 }*/
 
 
-//module.exports = initDB;
+//module.exports = connectDB;
