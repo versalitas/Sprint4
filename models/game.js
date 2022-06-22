@@ -1,33 +1,17 @@
-const {DataTypes} = require("sequelize");
-const Sequelize = require('sequelize');
+const {DataTypes} = require('sequelize');
+//sequelize object
+const sequelize = require('./index.js');
 
  
-    const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-        //host: process.env.DB_HOST,
-        dialect: process.env.DB_DIALECT,
-        //port: process.env.DB_PORT
-      });
-    
-    
-    const Players = sequelize.define('players', {
-        id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-        },
-        username: {
+const Players = sequelize.define('players', {
+    username: {
         type: DataTypes.STRING,
-        defaultValue: "anonymous"
-        }
-       }
-    )
-  /*  
+        defaultValue: "anonymous",
+        
+    }
+})
+  
     const Scores = sequelize.define('scores', {
-        id:{
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-            },
         dice1: {
             type: DataTypes.SMALLINT,
             allowNull: false
@@ -41,6 +25,21 @@ const Sequelize = require('sequelize');
             allowNull: false
         }
     })
+
+// one-to-many relationship
+Players.hasMany(Scores); 
+Scores.belongsTo(Players);
+
+Players.sync()
+.then()
+.catch(err => console.log(err));
+
+Scores.sync()
+.then()
+.catch(err => console.log(err));
+
+
+module.exports = {Players, Scores};
 
 
 
@@ -60,7 +59,7 @@ const Sequelize = require('sequelize');
 
 Players.hasMany(Scores, {onDelete:'cascade'});
 Scores.belongsTo(Players);
-*/
+
 
 module.exports = {Players, sequelize/*, Scores*/};
 

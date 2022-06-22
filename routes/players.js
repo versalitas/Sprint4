@@ -7,7 +7,7 @@ const addPlayer = require('../controllers/players.js');
 
 
 
-//api.post('/player', addPlayer);
+api.post('/players', addPlayer);
 
 
 

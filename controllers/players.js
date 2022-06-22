@@ -1,38 +1,48 @@
-const {Players} = require('../models/game.js');
-const Sequelize = require('sequelize');
+const {Players} = require ('../models/game');
+const Sequelize = require('sequelize')
+  
+ 
+const addPlayer = async (req, res) => {
 
-
-const addPlayer = async (req,res) => {
-    
     try {
-        const userName = req.body.username.toLowerCase();
+        let userName = req.body.username;
         let player = '';
-    
-        if(userName) {
-            const duplicateName = (Players.findOne({where: {name: userName}}));
-            
-            if(duplicateName && userName !== "anonymous"){
-                  return res.status(400).send({status: 'fail', message: 'Duplicated data'})
-                }
 
-            player = await Players.create({ name: userName });
-        
+        if (userName) {
+
+            const isRegistered = await Players.findOne({
+                where:{ username: userName },
+            });
+
+            if(isRegistered){
+                return res.status(400).send({ status: "fail", message: "Username is not unique"}); 
+            }
+
+            player = await Players.create({ username: userName})
+
         } else {
-            //anonymous is default
+            
             player = await Players.create();
         }
-
-        res.status(200).send({status: 'success', message: 'Player has been created correctly.'})
-
-        } catch (err) {
+            
+            res.status(200).send({
+                status: "success",
+                data: {
+                    id: player.id,
+                    username: player.username,
+                }
+            });
+            
+     } catch (err) {
         res.status(500).send({
             status: 'error',
             message: err.message
         })
     }
 }
+ 
 
-/*
+
 const updatePlayer = async (req,res) => {
     
 
@@ -45,25 +55,25 @@ const updatePlayer = async (req,res) => {
         const player = await Players.findOne({ where: {id : userId}});
         
         //if id correspond to registered user
-        if(!player) {
-            return res.status(400).send({status: 'fail', message: 'Bad request: player id not valid.'})
+        if (!player) {
+            return res.status(400).send({status: 'fail', message: 'Bad request: id not valid.'})
         }
         //if req.body contains username
-        if(!userName || userName == 'undefined'){
+        if(!userName){
             return res.status(400).send({status: 'fail', message: 'Bad request: username not defined.'})
         }
         //if userName is unique
-        const isUnique = await Players.findOne({where: {username :userName}});
+        const isUnique = await Players.findOne({where: {username: userName}});
 
         if(!isUnique){
-            return res.status(400).send({status: 'fail', message: 'Bad request: username not unique.'})
+            return res.status(400).send({status: 'fail', message: 'Bad request: username is not unique.'})
         }
         
        //update property
         player.name = userName;
         await player.save();
 
-       res.status(200).send({status: 'success', message: "Player's name has been updated correctly."})
+       res.status(200).send({status: 'success', message: "Username has been updated correctly."})
 
     } catch(err) {
             res.status(500).send({
@@ -72,11 +82,12 @@ const updatePlayer = async (req,res) => {
             })
     }
 
-   const getPlayers = async(req, res) => {
+   /*
+    const getPlayers = async(req, res) => {
        try {
 
         let players = await Players.findAll();
-        let playersInfo = players.map(player => )
+        let playersInfo = players.map(player => {}
 
 
 
@@ -88,10 +99,10 @@ const updatePlayer = async (req,res) => {
             })
     }
 
-
+*/
 
     
 
 module.exports = {addPlayer, updatePlayer, getPlayers};
-*/
-module.exports = addPlayer;
+
+module.exports = addPlayer; */

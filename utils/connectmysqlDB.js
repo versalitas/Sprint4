@@ -14,18 +14,12 @@ const initDB = async() => {
     user: process.env.DB_USER /*|| "root"*/,
     password: process.env.DB_PASSWORD /*|| "enunlugardelamancha"*/});
     
-    //await connection.connect();
+    await connection.connect();
     await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbName};`);
-
-    const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-        //host: process.env.DB_HOST,
-        dialect: process.env.DB_DIALECT,
-        //port: process.env.DB_PORT
-      });
     console.info("Database created or successfully checked");
-    //await connection.end();
+    await connection.end();
 
-    await sequelize.sync();
+   
 };
 
 
