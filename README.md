@@ -40,6 +40,9 @@ not working as expected... need a hint
 
 POST/time
 
+In postman authorization/ basic auth username: admin, password: qwerty
+response
+
 ```
 {
     "date": "14/6/2022, 18:30:02"
