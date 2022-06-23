@@ -27,6 +27,7 @@ const addPlayer = async (req, res) => {
             
             res.status(200).send({
                 status: "success",
+                message: "User has succesfully been created.",
                 data: {
                     id: player.id,
                     username: player.username,
@@ -45,8 +46,7 @@ const addPlayer = async (req, res) => {
 
 const updatePlayer = async (req,res) => {
     
-
-   try {
+    try {
         
         const userId = parseInt(req.params.id);
         const userName = req.body.username;
@@ -82,12 +82,12 @@ const updatePlayer = async (req,res) => {
             })
     }
 
-   /*
+ /*  
     const getPlayers = async(req, res) => {
        try {
 
         let players = await Players.findAll();
-        let playersInfo = players.map(player => {}
+        console.log(players);
 
 
 
@@ -103,6 +103,7 @@ const updatePlayer = async (req,res) => {
 
     
 
-module.exports = {addPlayer, updatePlayer, getPlayers};
+//module.exports = {addPlayer, updatePlayer, getPlayers};
 
-module.exports = addPlayer; */
+module.exports = addPlayer;
+
