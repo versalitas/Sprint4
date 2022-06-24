@@ -2,10 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const createDB = require('./utils/connectmysqlDB.js');
 
-
 //requiering routes
 const allRoutes = require('./routes/players.js');
-
 
 const app = express();
 
@@ -20,6 +18,11 @@ app.use(express.json());
 
 // Routes
 app.use('/api', allRoutes);
+
+//invalid route handling
+app.use((req, res, next)=>{
+  res.status(404).send({message:"Route Not Found"});
+});
 
 // Starting the server
 const server = app.listen(port, () => {

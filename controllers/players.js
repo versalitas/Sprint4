@@ -1,7 +1,7 @@
 const {Players} = require ('../models/game');
 const Sequelize = require('sequelize')
   
- 
+ //add player
 const addPlayer = async (req, res) => {
 
     try {
@@ -43,7 +43,7 @@ const addPlayer = async (req, res) => {
 }
  
 
-
+//update name
 const updatePlayer = async (req,res) => {
     
     try {
@@ -65,7 +65,7 @@ const updatePlayer = async (req,res) => {
         //if new userName is unique
         const isUnique = await Players.findOne({where: {username: userName}});
 
-        if(!isUnique){
+        if(isUnique){
             return res.status(400).send({status: 'fail', message: 'Bad request: username is not unique.'})
         }
         
@@ -73,7 +73,7 @@ const updatePlayer = async (req,res) => {
         player.name = userName;
         await player.save();
 
-       res.status(200).send({status: 'success', message: "Username has been updated correctly."})
+        res.status(200).send({status: 'success', message: "Username has been updated correctly."})
 
     } catch(err) {
             res.status(500).send({
@@ -81,29 +81,26 @@ const updatePlayer = async (req,res) => {
                 message: err.message
             })
     }
+}
 
- /*  
-    const getPlayers = async(req, res) => {
-       try {
+ //get all players
+const getPlayers = async(req, res) => {
+    try {
 
-        let players = await Players.findAll();
-        console.log(players);
+     let players = await Players.findAll();
+     
+     res.status(200).send({status: 'success', message: players})
 
-
-
-
-        } catch(err) {
-            res.status(500).send({
-                status: 'error',
-                message: err.message
-            })
-    }
-
-*/
-
+     } catch(err) {
+         res.status(500).send({
+             status: 'error',
+             message: err.message
+         })
+     }
+}    
     
 
-//module.exports = {addPlayer, updatePlayer, getPlayers};
+module.exports = {addPlayer, updatePlayer, getPlayers};
 
-module.exports = addPlayer;
+
 
