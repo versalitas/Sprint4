@@ -1,52 +1,65 @@
-const upload = require('../middlewares/multerMiddleware.js')
+
+const res = require('express/lib/response');
+const multer = require('multer');
+const path = require('path');
+
+const checkFile = require('../middlewares/fileFilter.js')
+const maxSize = 31457280;
+
+const dir = './public';
+
+//controller
+
+//define disk storage
+let storage = multer.diskStorage({
+  destination: dir,
+  fileName: (req, file, cb) => {
+  cb(null, file.fieldname + '-' + Date.now());
+  }
+});
 
 
+// Init Upload
+const upload = multer({
+  storage: storage,
+  limits:{fileSize: maxSize},
+  fileFilter: function(req, file, cb){
+    checkFile(file, cb);
+  }
+}).single('image');
 
+//controller
+const uploadImage = (req,res) => { 
+  
+  try{
+   
+    upload(req, res,(err) => {
+    // Invalid file extension
+   if (err) {return res.status(415).send({status: 'fail', message: err.message});
 
-
-
-const uploadImage = (req,res) => { upload(req, res, function(err){
-    
-    if (req.file == 'undefined' || !req.file ) {return res.status(400).send({status: 'fail', message: 'Oops! File not found'});
+    } else if(!req.file ){return res.status(400).send({status: 'fail', message: 'Oops! File not found'});
             
-      // Invalid file extension
-    } else if (err){return res.status(415).send({status: 'fail', message: err.message});
-            
-    } else { return  res.status(200).send({
+    } else { return res.status(200).send({
         message: "File uploaded successfully!",
         file: req.file});
     }
+    })
+  } catch (err) {
+  res.status(500).send({
+      status: 'error',
+      message: err.message
   })
+ }
 }
-
-/*
-const uploadControl = (req,res) =>{
-  
-  try{
-    // error handlers
-         
-         // file not selected
-         if (req.file == 'undefined') return res.status(400).send({status: 'fail', message: 'Oops! File not found'});
-        
-         // file size error
-         if (err instanceof multer.MulterError) return res.status(413).send({status: 'fail', message: 'Entity too large'});
-     
-         // Invalid file extension, message returned from fileFilter callback
-         if (req.fileValidationError) return res.status(415).send({status: 'fail', message: 'Unsupported Media Type'});
-         
-         //if succesful
-         return res.status(200).send({status:"Success", message: "File successfully uploaded"});
-    
-
-    } catch(err){
-    return res.status(500).send({
-      status:"Error", 
-      message: "Server armageddon. Sorry..."
-    });
-  }
-}
-
-*/
 
 module.exports = uploadImage;
+
+
+
+
+
+
+
+
+
 

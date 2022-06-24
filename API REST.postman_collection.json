@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "userData",
+			"name": "users_200",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -27,7 +27,7 @@
 			"response": []
 		},
 		{
-			"name": "uploads",
+			"name": "uploads_200",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -37,7 +37,7 @@
 						{
 							"key": "image",
 							"type": "file",
-							"src": "Sop9X4oPJ/swirl.jpg"
+							"src": "/Users/MK/Desktop/Sprint4-Sprint5/testfiles/swirl.jpg"
 						}
 					]
 				},
@@ -64,8 +64,97 @@
 			"response": []
 		},
 		{
-			"name": "time",
+			"name": "uploads_400",
 			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/uploads",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"uploads"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploads_415",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/MK/Desktop/Sprint4-Sprint5/testfiles/test.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/uploads",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"uploads"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "time_200",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "qwerty",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -79,8 +168,8 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "username",
-							"value": "mk\n  \n      ",
+							"key": "",
+							"value": "\n  \n      ",
 							"type": "text",
 							"disabled": true
 						}
@@ -100,91 +189,6 @@
 				}
 			},
 			"response": [
-				{
-					"name": "time_authorized",
-					"originalRequest": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "name",
-								"value": "admin",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "password",
-								"value": "qwerty",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "mk\n      ",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/time",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"time"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "30"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"1e-ap39Rr81wSDkeHE8zxqPfm/dsZU\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 14 Jun 2022 16:30:02 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"date\": \"14/6/2022, 18:30:02\"\n}"
-				},
 				{
 					"name": "time_wrong_password",
 					"originalRequest": {
@@ -318,15 +322,45 @@
 			]
 		},
 		{
-			"name": "pokemons",
+			"name": "time_401",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "qwert",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "mk\n  \n      ",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
 				"url": {
-					"raw": "http://localhost:3000/api/pokemons?id=10",
+					"raw": "http://localhost:3000/api/time",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -334,12 +368,191 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"pokemons"
+						"time"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "time_wrong_password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/time",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"time"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "MK",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"37-5ONu5bAgBPeDksjS2aOK0M/Kybk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jun 2022 18:30:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
 					],
-					"query": [
+					"cookie": [],
+					"body": "{\n    \"status\": \"Error\",\n    \"message\": \"401 Unauthorized access.\"\n}"
+				},
+				{
+					"name": "time_empty_fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/time",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"time"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "MK",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"37-5ONu5bAgBPeDksjS2aOK0M/Kybk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jun 2022 18:31:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Error\",\n    \"message\": \"401 Unauthorized access.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "pokemon _200",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/pokemons/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"pokemons",
+						":id"
+					],
+					"variable": [
 						{
 							"key": "id",
-							"value": "10"
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pokemon _404",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/pokemons/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"pokemons",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
 						}
 					]
 				}

@@ -35,7 +35,20 @@ POST /uploads
 response
 
 ```
-not working as expected... need a hint
+{
+    "message": "File uploaded successfully!",
+    "file": {
+        "fieldname": "image",
+        "originalname": "swirl.jpg",
+        "encoding": "7bit",
+        "mimetype": "image/jpeg",
+        "destination": "./public",
+        "filename": "cf40684f56ac0afb97f65b332fc3a4f9",
+        "path": "public/cf40684f56ac0afb97f65b332fc3a4f9",
+        "size": 120127
+    }
+}
+
 ```
 
 POST/time
@@ -50,15 +63,20 @@ response
 
 ```
 
-GET /pokemons/id
+GET /api/pokemons/:id
+
+path variable 6
 
 ```
-404... 
+{
+    "pokemon": {
+        "name": "charizard",
+        "height": 17,
+        "weight": 905
+    }
+}
 
 ```
-
-
-
 
 ## What is REST?
 
