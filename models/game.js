@@ -41,30 +41,3 @@ Scores.sync()
 
 module.exports = {Players, Scores};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-Players.hasMany(Scores, {onDelete:'cascade'});
-Scores.belongsTo(Players);
-
-
-module.exports = {Players, sequelize/*, Scores*/};
-
-/*
-POST /games/{id}: player(id) rolls the dice
-DELETE /games/{id}: delete all rolls of player
-GET /games/{id}: list of all rounds of player (id)
-*/
