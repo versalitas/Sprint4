@@ -1,7 +1,7 @@
-
-//http://localhost:3001/api/users
+//http://localhost:3000/api/users
 
 const getUser = (req, res) => {
+    
     try{
         res.status(200).json({
                 "name": "Marie-Klara",
@@ -15,10 +15,5 @@ const getUser = (req, res) => {
         })
     }
 }
-
-
-
-    
-
 
 module.exports = getUser;
