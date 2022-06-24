@@ -1,6 +1,3 @@
-TODO: 
-edit postman collection
-refactor pokemon
 # Run Project
 
 Install dependencies with npm.
