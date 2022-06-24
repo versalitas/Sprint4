@@ -1,3 +1,4 @@
+
 const {Players, Scores} = require ('../models/game.js');
 
 const playGame = async function (req, res) {
