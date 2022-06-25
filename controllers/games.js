@@ -13,8 +13,8 @@ const playGame = async function (req, res) {
         if(!player) return res.status(400).send({ status: "fail", message: "User not found"}); 
     
         //cast dice
-        let dice1 = Math.floor(Math.rand() * 6 + 1)
-        let dice2 = Math.floor(Math.rand() * 6 + 1)
+        let dice1 = Math.floor(Math.random() * 6 + 1)
+        let dice2 = Math.floor(Math.random() * 6 + 1)
         const result = dice1 + dice2;
         const hasWon = (result === 7)? 1 : 0;
             
