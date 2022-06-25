@@ -1,11 +1,12 @@
 
 const express = require('express');
 const api = express.Router();
-const playGame = require('../controllers/games.js')
+const {playGame, getScores} = require('../controllers/games.js')
 
 
 
 api.post('/games/:id', playGame);
+api.get('/games/:id', getScores);
 
 /*
 DELETE /games/{id}: delete all rolls of player
