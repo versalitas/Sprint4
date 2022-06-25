@@ -1,6 +1,6 @@
-
 const {Players, Scores} = require ('../models/game.js');
 
+//execute game
 const playGame = async function (req, res) {
     
     try {
@@ -48,17 +48,17 @@ const getScores = async function (req, res) {
             where: { id: parseInt(req.params.id) },
             });
         
-            // checks if player exists
+            // check if player exists
             if(!player) return res.status(400).send({ status: "fail", message: "User not found"}); 
        
-            // Get all the rolls of this player
+            // Get the pertinent scores 
             let scores = await Scores.findAll({
                 where: { playerId: player.id },
               });
         
             res.status(200).send({
             status: "success",
-            message: scores
+            data: scores
         });
 
     } catch (err) {
@@ -71,7 +71,35 @@ const getScores = async function (req, res) {
 
 
 //delete scores by player id
+const deleteScores = async function (req, res) {
+    
+    try {
+        const player = await Players.findOne({
+            where: { id: parseInt(req.params.id) },
+            });
+        
+            // check if player exists
+            if(!player) return res.status(400).send({ status: "fail", message: "User not found"}); 
+       
+            // delete all scores
+            await Scores.destroy({
+                where: {playerId: player.id}});
+        
+            res.status(200).send({
+            status: "success",
+            data: {playerId: player.id,
+                message: 'Scores successfully deleted.'
+            }
+        });
+
+    } catch (err) {
+        res.status(500).send({
+            status: 'error',
+            message: err.message
+        })
+    }
+};
 
 
 
-module.exports = {playGame, getScores};
+module.exports = {playGame, getScores, deleteScores};
