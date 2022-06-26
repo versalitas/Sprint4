@@ -7,8 +7,7 @@ const Players = sequelize.define('players', {
     username: {
         type: DataTypes.STRING,
         defaultValue: "anonymous",
-        
-    }
+    } 
 })
   
     const Scores = sequelize.define('scores', {

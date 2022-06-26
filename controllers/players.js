@@ -1,7 +1,6 @@
 const {Players} = require ('../models/game');
-const Sequelize = require('sequelize')
-  
- //add player
+
+//add player
 const addPlayer = async (req, res) => {
 
     try {
