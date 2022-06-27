@@ -1,12 +1,17 @@
+//console.log(require('crypto').randomBytes(64).toString('hex'));
+
 require('dotenv').config();
 const express = require('express');
+
 const initDB = require('./utils/connectmysqlDB.js');
 
 //requiering routes
+//const authRoute = require('./routes/auth.js');
+
 const playersRoutes = require('./routes/players.js');
 const gamesRoutes = require('./routes/games.js');
 const rankingsRoutes = require('./routes/rankings.js');
-
+//const middleware = require('./middlewares/middleware.js');
 const app = express();
 
 const port = process.env.API_PORT || 3001;
@@ -18,7 +23,10 @@ app.use(express.json());
 
 // Middlewares
 
+//app.use(middleware);
+
 // Routes
+//app.use('/api', authRoute);
 app.use('/api', playersRoutes);
 app.use('/api', gamesRoutes);
 app.use('/api', rankingsRoutes);
@@ -27,6 +35,7 @@ app.use('/api', rankingsRoutes);
 app.use((req, res, next)=>{
   res.status(404).send({message:"Bad request: Route Not Found"});
 });
+
 
 // Starting the server
 const server = app.listen(port, () => {

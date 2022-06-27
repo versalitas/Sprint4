@@ -47,8 +47,10 @@ const getScores = async function (req, res) {
     
     try {
 
+        const reqId = parseInt(req.params.id)
+
         const player = await Players.findOne({
-            where: { id: parseInt(req.params.id) },
+            where: { id: reqId },
             });
         
             // check if player exists
@@ -61,7 +63,7 @@ const getScores = async function (req, res) {
         
             res.status(200).send({
             status: "success",
-            data: scores
+            scores
         });
 
     } catch (err) {

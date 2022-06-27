@@ -26,6 +26,8 @@ const Players = sequelize.define('players', {
         }
     })
 
+    
+
 // one-to-many relationship
 Players.hasMany(Scores); 
 Scores.belongsTo(Players);
