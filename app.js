@@ -5,12 +5,14 @@ const createDB = require('./utils/connectmysqlDB.js');
 //requiering routes
 const playersRoutes = require('./routes/players.js');
 const gamesRoutes = require('./routes/games.js');
+const rankingsRoutes = require('./routes/rankings.js');
 
 const app = express();
 
 const port = process.env.API_PORT || 3001;
 
 createDB();
+
 // Config
 app.use(express.json());
 
@@ -20,6 +22,7 @@ app.use(express.json());
 // Routes
 app.use('/api', playersRoutes);
 app.use('/api', gamesRoutes);
+app.use('/api', rankingsRoutes);
 
 //invalid route handling
 app.use((req, res, next)=>{

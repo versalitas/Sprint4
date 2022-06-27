@@ -4,8 +4,9 @@ const {Players, Scores} = require ('../models/game.js');
 const playGame = async function (req, res) {
     
     try {
+        const reqId = req.params.id
         const player = await Players.findOne({
-        where: { id: parseInt(req.params.id) },
+        where: { id: parseInt(reqId) },
         });
     
         // checks if player exists
@@ -16,16 +17,18 @@ const playGame = async function (req, res) {
         let dice2 = Math.floor(Math.random() * 6 + 1)
         const result = dice1 + dice2;
         const hasWon = (result === 7)? 1 : 0;
-            
+
+
         const score = {
             playerId: player.id,
             dice1,
             dice2,
             win: hasWon
-        }   
-            
+        }  
+        
         await Scores.create(score);
-            res.status(200).send({
+
+        res.status(200).send({
             status: "success",
             game: score
         });

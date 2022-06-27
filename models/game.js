@@ -2,12 +2,12 @@ const {DataTypes} = require('sequelize');
 //sequelize object
 const sequelize = require('./index.js');
 
- 
 const Players = sequelize.define('players', {
     username: {
         type: DataTypes.STRING,
-        defaultValue: "anonymous",
-    } 
+        defaultValue: "anonymous"
+    }
+   
 })
   
     const Scores = sequelize.define('scores', {
@@ -21,7 +21,8 @@ const Players = sequelize.define('players', {
         },
         win: {
             type: DataTypes.SMALLINT,
-            allowNull: false
+            allowNull: false,
+            defaultValue: "0",
         }
     })
 
