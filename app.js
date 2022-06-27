@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const createDB = require('./utils/connectmysqlDB.js');
+const initDB = require('./utils/connectmysqlDB.js');
 
 //requiering routes
 const playersRoutes = require('./routes/players.js');
@@ -11,13 +11,12 @@ const app = express();
 
 const port = process.env.API_PORT || 3001;
 
-createDB();
+initDB();
 
 // Config
 app.use(express.json());
 
 // Middlewares
-
 
 // Routes
 app.use('/api', playersRoutes);

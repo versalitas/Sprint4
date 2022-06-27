@@ -1,53 +1,42 @@
+
 //https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
 //https://stackoverflow.com/questions/60198208/sequelize-js-finding-the-rank-of-a-row-based-on-a-column-value
 //https://stackoverflow.com/questions/59928730/sequelize-js-how-to-get-average-aggregate-of-associated-model
 //https://stackoverflow.com/questions/22627258/how-does-group-by-works-in-sequelize
 //https://stackoverflow.com/questions/28206680/using-group-by-and-joins-in-sequelize
 
-const {Players, Scores} = require ('../models/game.js');
-const Sequelize = require('sequelize');
+const findRanking = require('../utils/findRankings.js');
 
 
-const getRanking = async (req, res) => {
-    
+const getRanking =  async (req, res) => {
     try {
-        // calculates average score from Scores and add to Players
-        let players = await Players.findAll({
-                include: [{
-                model: Scores,
-                attributes: []
-                }],
-            attributes: ['id','username',[Sequelize.fn('AVG', Sequelize.col('win')), 'win', ]],
-            group: 'id',
-            
-        });
-       
-        //average score all users
-        let averageScore = await Scores.findAll({
-            attributes:[[Sequelize.fn('AVG', Sequelize.col('win')), 'win', ]]
-        })
+        let ranking = await findRanking();
 
-        averageScore = (averageScore[0].win * 100);
-        
-        //filtering only players with wins
-        let onlyWinners = (players.filter(p => p.dataValues.win));
-        //sorted by desc order
-        let orderedWinners = onlyWinners.sort((a,b) => (b.dataValues.win - a.dataValues.win));
-        
-        return orderedWinners;
-       
-    
-
-
-     
         res.status(200).send({
-            status: 'success',
-            allplayersavg : averageScore,
-            playerranking: orderedWinners
+            status: "success",
+            ranking
+        });
 
-            
+    } catch (err) {
+        res.status(500).send({
+            status: 'error',
+            message: err.message
         })
+    }
+}
 
+const getWinner = async (req, res) => {
+    try {
+        
+        let ranking = await findRanking();
+        //winner postition 0 of array
+        let winner = ranking.playerranking[0];
+        //if (!winner) winner= {};
+        
+        res.status(200).send({
+            status: "success",
+            winner
+        });
         
     } catch (err) {
         res.status(500).send({
@@ -57,7 +46,31 @@ const getRanking = async (req, res) => {
     }
 }
 
-module.exports = getRanking;
+const getLoser = async (req, res) => {
+    try {
+        
+        let ranking = await findRanking();
+
+        //last postiton of ranking
+        let loser = ranking.playerranking[ranking.playerranking.length -1];
+        //if (!loser) loser = {};
+        
+        res.status(200).send({
+            status: "success",
+            loser
+        });
+        
+
+    } catch (err) {
+        res.status(500).send({
+            status: 'error',
+            message: err.message
+        })
+    }
+}
+
+     
+module.exports = {getRanking, getWinner, getLoser};
   
   
 
