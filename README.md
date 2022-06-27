@@ -1,50 +1,153 @@
+# Run Project
 
-# Node Initial Project
+Install dependencies with npm.
+Change .env.example to .env
+Run server (runs from port 3000 or 3001)
+```
+npm install
+npm start
+```
 
-### Project Structure
+Check endpoints (the few that works... sob, sob)
+Postman_collection.json
 
-Main structure of node.js project. Folders / files:
+## LEVEL 1
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>crons</b>
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>tmp</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
-- <b>package.json</b>.
+http://localhost:3000/api/
 
-### Import project for use with WebStorm
+endpoints:
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
+GET  /users
+
+response
+
+```
+{
+    "name": "Marie-Klara",
+    "age": "47",
+    "url": "http://localhost:3000/api/users"
+}
+
+```
+
+POST /uploads
+
+response
+
+```
+{
+    "message": "File uploaded successfully!",
+    "file": {
+        "fieldname": "image",
+        "originalname": "swirl.jpg",
+        "encoding": "7bit",
+        "mimetype": "image/jpeg",
+        "destination": "./public",
+        "filename": "cf40684f56ac0afb97f65b332fc3a4f9",
+        "path": "public/cf40684f56ac0afb97f65b332fc3a4f9",
+        "size": 120127
+    }
+}
+
+```
+
+POST/time
+
+In postman authorization/ basic auth username: admin, password: qwerty
+response
+
+```
+{
+    "date": "14/6/2022, 18:30:02"
+}
+
+```
+
+GET /api/pokemons/:id
+
+path variable 6
+
+```
+{
+    "pokemon": {
+        "name": "charizard",
+        "height": 17,
+        "weight": 905
+    }
+}
+
+```
+
+## What is REST?
+
+Architectural style of communication standards between computer systems on the web.
+
+REpresentational State Transfer
+
+#### Separation client/ server:
+
+Each side can be changed independently without affecting the other side.
+
+Since they know the format of exchange they can be kepy modular and separate. Fleixibilty and scalability.
+
+#### Statelessness:
+
+Client and Server understand any message received indepentently of previous messages and respective state.
+#### REST uses Resources 
+
+Resources are the nouns of the Web, they describe any object, document, or thing that you may need to store or send to other services.
+
+#### REST architecture Communication Client / Server
+
+Clients send requests to retrieve or modify resources, and servers send responses to these requests.
+
+##### Requests consists of:
+- HTTP verb, which defines what kind of operation to perform
+- header, which allows the client to pass along info about the request
+- path to a resource
+- optional message body containing data
+
+##### HTTP Verbs
+
+**GET** — retrieve a specific resource (by id) or a collection of resources
+**POST** — create a new resource
+**PUT** — update a specific resource (by id)
+**DELETE** — remove a specific resource by id
+
+##### HEADER accept field
+
+Accept field : the type of content that the client is able to receive from the server. Consists of type and subtype separated by a slash. 
+**text:** text/html, text/css, text/plain
+**image:** image/png, image/jpeg, image/gif
+**audio:** audio/wav, audio/mpeg
+**video:** video/mp4, video/ogg
+**application** application/json, application/pdf, application/xml, application/octet-stream
+
+##### STATUS code 
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
 
-### Import project for use with Visual Studio Code
+sprint4 Omar hints...
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+jason web token
+payload = the object stored in the data base with the info user
 
+jwt = payload encripted with (key + user password)
 
-### Utilities
+jwt is what is saved in the db
 
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+base de dates
+sequalize tiene que generar la inicialización de la base de datos: si hay una base drop si no crear
+
+pokemon
+const fetch = require('cross-fetch') let response = await 'api del pokemon con id' response.json;
+
+recibir petición de una api, hacer la bonita y volver a subirla.
+
+servidor
+separar servidor, que el frontend y el backend comunique
+
+vue o react
+vue se añade con script no hace falta instalar, menos farragoso
+
