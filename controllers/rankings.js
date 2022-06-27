@@ -9,45 +9,46 @@ const Sequelize = require('sequelize');
 
 
 const getRanking = async (req, res) => {
+    
     try {
         // calculates average score from Scores and add to Players
         let players = await Players.findAll({
                 include: [{
                 model: Scores,
                 attributes: []
-               }],
+                }],
             attributes: ['id','username',[Sequelize.fn('AVG', Sequelize.col('win')), 'win', ]],
-            group: 'id'
+            group: 'id',
+            
         });
        
-        let averageScore = await Scores.finAll({
-            attributes:['id', [Sequelize.fn('AVG', Sequelize.col('win')), 'win', ]]
+        //average score all users
+        let averageScore = await Scores.findAll({
+            attributes:[[Sequelize.fn('AVG', Sequelize.col('win')), 'win', ]]
         })
+
+        averageScore = (averageScore[0].win * 100);
+        
+        //filtering only players with wins
+        let onlyWinners = (players.filter(p => p.dataValues.win));
+        //sorted by desc order
+        let orderedWinners = onlyWinners.sort((a,b) => (b.dataValues.win - a.dataValues.win));
+        
+        return orderedWinners;
+       
+    
+
+
      
         res.status(200).send({
             status: 'success',
-            players
+            allplayersavg : averageScore,
+            playerranking: orderedWinners
+
+            
         })
 
-    /*
-    let rank;
-    let ranking = 
-        players
-        .filter(p => p.wins)
-        .sort((a,b) => b.wins - a.wins)
-        .map(pl => {
-            return {
-                playerId: pl.id,
-                username: pl.username,
-                playerAverage: (pl.wins * 100),
-                ranking: ++rank
-            }
-        });
-        res.status(200).send({
-            status: 'success',
-            ranking
-        })
-  */      
+        
     } catch (err) {
         res.status(500).send({
             status: 'error',
