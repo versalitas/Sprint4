@@ -20,13 +20,13 @@ POST /players add player with unique name or 'anonymous' as default, sequelize a
  
 PUT /players/:id updates a players name
 
-GET/players return list of alls Players with winPercentage
+GET/players return list of all Players with winPercentage
 
-POST /games/{id}: player(id) rolls the dice
+POST /games/:id player(id) cast the dice
 
-DELETE /games/{id}: delete all rolls of player
+DELETE /games/:id delete all scores of player
 
-GET /games/{id}: list of all rounds of player (id)
+GET /games/:id list of all rounds of player (id)
 
 GET /scores: player ranking according to winPercentage, and winMedium
 getPlayers: playerName, winPercentage, winMedian
