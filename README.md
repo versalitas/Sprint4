@@ -1,4 +1,7 @@
-Install npm
+# REST API DICE GAME
+Instructions:
+Install node modules.
+
 ```
 npm install
 
@@ -25,7 +28,7 @@ If the sum of the roll adds up to 7 = win.
 
 ENDPOINTS
 
--- POST /players-- add player with unique name or 'anonymous' as default, sequelize adds id and register date.
+POST /players-- add player with unique name or 'anonymous' as default, sequelize adds id and register date.
  
 PUT /players/:id updates a players name
 
