@@ -1,4 +1,5 @@
-const {Players} = require ('../models/game');
+const {Players, Scores} = require ('../models/game.js');
+const Sequelize = require('sequelize');
 
 //add player
 const addPlayer = async (req, res) => {
@@ -85,8 +86,20 @@ const updatePlayer = async (req,res) => {
  //get all players
 const getPlayers = async(req, res) => {
     try {
-
-     let players = await Players.findAll();
+        //get players with win percentage
+        let players = await Players.findAll({
+            include: [{
+            model: Scores,
+            attributes: []
+            }],
+        attributes: ['id','username',[Sequelize.fn('AVG', Sequelize.col('win')), 'win', ]],
+        group: 'id',
+        
+        });
+        //multiply rate by 100
+        players = players.map(obj => {
+            obj.dataValues.win = Math.floor(obj.dataValues.win * 100)
+            return obj});
      
      res.status(200).send({status: 'success', message: players})
 
