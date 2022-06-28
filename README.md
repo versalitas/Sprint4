@@ -1,13 +1,22 @@
-Install npm.
-
-Convert .env.example to .env and add if necessary pertinent variables.
-
-Run server.
-
+Install npm
 ```
 npm install
+
+```
+Convert .env.example to .env and adapt variables to pertinent environment.
+
+Run server with
+
+```
 npm start
 ```
+
+or in developper mode
+
+```
+npm run dev
+```
+
 TASK: 
 Game with two dice. 
 
@@ -16,7 +25,7 @@ If the sum of the roll adds up to 7 = win.
 
 ENDPOINTS
 
-POST /players add player with unique name or 'anonymous' as default, sequelize adds id and register date.
+-- POST /players-- add player with unique name or 'anonymous' as default, sequelize adds id and register date.
  
 PUT /players/:id updates a players name
 
