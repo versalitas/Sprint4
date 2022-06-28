@@ -14,13 +14,9 @@ If the sum of the roll adds up to 7 = win.
 
 ENDPOINTS
 
-POST /players 
-create player with unique name or anonymous, adds id and register date.
-addPlayer (registers with unique name. Id and register date is assigned. If no name = "anonymous". 
-
-PUT /players/{id} 
-modify player name
-updatePlayer
+POST /players add player with unique name or 'anonymous' as default, sequelize adds id and register date.
+ 
+PUT /players/:id updates a players name
 
 GET/players return list of alls Players with winPercentage
 
