@@ -8,8 +8,32 @@ Run server.
 npm install
 npm start
 ```
+TASK: 
+Game with two dice. 
 
-Endpoints
+If the sum of the roll adds up to 7 = win.
+
+
+ENDPOINTS
+
+POST /players add player with unique name or 'anonymous' as default, sequelize adds id and register date.
+ 
+PUT /players/:id updates a players name
+
+GET/players return list of alls Players with winPercentage
+
+POST /games/{id}: player(id) rolls the dice
+
+DELETE /games/{id}: delete all rolls of player
+
+GET /games/{id}: list of all rounds of player (id)
+
+GET /scores: player ranking according to winPercentage, and winMedium
+getPlayers: playerName, winPercentage, winMedian
+
+GET /scores/loser: return Player with less winPercentage
+
+GET /scores/winner: return Player with best winPercentage
 
 
 ### Project Structure
@@ -32,8 +56,12 @@ Main structure of node.js project. Folders / files:
 - <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
 - <b>package.json</b>.
 
+//sources
 
-
+https://www.npmjs.com/package/sequelize
+https://sequelize.org/docs/v6/core-concepts/model-basics/
+https://javascript.plainenglish.io/save-time-learn-sequelize-in-7-mins-part-1-3e4fde67d037
+https://betterprogramming.pub/an-introduction-to-sequelize-a-node-js-object-relational-mapper-orm-267a51c2d978
 
 
 
