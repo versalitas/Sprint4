@@ -32,7 +32,7 @@ POST /players-- add player with unique name or 'anonymous' as default, sequelize
  
 PUT /players/:id updates a players name
 
-GET/players return list of all Players with winPercentage
+GET /players return list of all Players with winPercentage
 
 POST /games/:id player(id) cast the dice
 
