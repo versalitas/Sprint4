@@ -40,8 +40,7 @@ DELETE /games/:id delete all scores of player
 
 GET /games/:id list of all rounds of player (id)
 
-GET /scores: player ranking according to winPercentage, and winMedium
-getPlayers: playerName, winPercentage, winMedian
+GET /scores: player ranking according to percentage of wins, and medium of wins of all players.
 
 GET /scores/loser: return Player with less winPercentage
 
