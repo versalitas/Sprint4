@@ -12,7 +12,7 @@ const login = require('./routes/login.js');
 const playersRoutes = require('./routes/players.js');
 const gamesRoutes = require('./routes/games.js');
 const rankingsRoutes = require('./routes/rankings.js');
-const {validate, verifyToken} = require('./middlewares/jwt_middleware.js');
+//const {verifyToken} = require('./middlewares/jwt_middleware.js');
 const app = express();
 
 const port = process.env.API_PORT || 3001;
@@ -23,9 +23,9 @@ initDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.all('/api', validate, verifyToken);
+//app.all('/api', verifyToken);
 
-app.use('/api', login);
+//app.use('/api', login);
 
 // Middlewares
 
