@@ -1,8 +1,7 @@
 //https://asfo.medium.com/autenticando-un-api-rest-con-nodejs-y-jwt-json-web-tokens-5f3674aba50e
 
 const jwt = require('jsonwebtoken');
-const express = require('express');
-const app = express.Router();
+
 
 module.exports = async (req, res) => {
     
@@ -22,7 +21,7 @@ module.exports = async (req, res) => {
       username:ADMIN_NAME
       };
 
-      const accessToken = jwt.sign(payload, app.get(TOKEN_SECRET_KEY), {
+      const accessToken = jwt.sign(payload, TOKEN_SECRET_KEY, {
       expiresIn: 1440
       });
       

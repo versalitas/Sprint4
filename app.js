@@ -23,7 +23,7 @@ initDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.all('/', validate, verifyToken);
+app.all('/api', validate, verifyToken);
 
 app.use('/api', login);
 
