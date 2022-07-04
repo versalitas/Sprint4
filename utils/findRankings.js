@@ -21,6 +21,8 @@ const findRanking = async () => {
             group: 'id',
             
         });
+
+       
        
         //average score all users
         let averageScore = await Scores.findAll({
@@ -30,7 +32,7 @@ const findRanking = async () => {
         averageScore = (averageScore[0].win * 100);
         
         //filtering only players with wins
-        let onlyWinners = (players.filter(p => p.dataValues.win));
+        let onlyWinners = (players.filter(p => p.dataValues.win > 0));
         //sorted by desc order
         let orderedWinners = onlyWinners.sort((a,b) => (b.dataValues.win - a.dataValues.win));
         
@@ -41,7 +43,7 @@ const findRanking = async () => {
             
        
         return {
-            status: 'success',
+            
             allplayersavg : averageScore,
             playerranking: orderedWinners
         }

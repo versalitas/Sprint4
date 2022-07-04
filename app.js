@@ -3,33 +3,36 @@
 require('dotenv').config();
 const express = require('express');
 
+//connecting to DB
 const initDB = require('./utils/connectmysqlDB.js');
 
-//requiering routes
-//const authRoute = require('./routes/auth.js');
-
+//requireing routes
+const login = require('./routes/login.js');
 const playersRoutes = require('./routes/players.js');
 const gamesRoutes = require('./routes/games.js');
 const rankingsRoutes = require('./routes/rankings.js');
-//const middleware = require('./middlewares/middleware.js');
+
+
 const app = express();
 
 const port = process.env.API_PORT || 3001;
 
+// requireing middleware
+const checkToken = require('./middlewares/checkToken.js');
+
+//starting DB
 initDB();
 
 // Config
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Middlewares
 
-//app.use(middleware);
+app.use('/api', login);
+app.use('/api', checkToken, playersRoutes);
+app.use('/api', checkToken, gamesRoutes);
+app.use('/api', checkToken, rankingsRoutes);
 
-// Routes
-//app.use('/api', authRoute);
-app.use('/api', playersRoutes);
-app.use('/api', gamesRoutes);
-app.use('/api', rankingsRoutes);
 
 //invalid route handling
 app.use((req, res, next)=>{

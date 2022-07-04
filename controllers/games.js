@@ -4,13 +4,20 @@ const {Players, Scores} = require ('../models/game.js');
 const playGame = async function (req, res) {
     
     try {
-        const reqId = req.params.id
+        const reqId = parseInt(req.params.id);
+        if(reqId === NaN){
+            return res.status(400).send({
+                //status: 'fail', 
+                message: 'Bad request: id must be a number.'})
+        }
         const player = await Players.findOne({
-        where: { id: parseInt(reqId) },
+        where: { id: reqId },
         });
     
         // checks if player exists
-        if(!player) return res.status(400).send({ status: "fail", message: "User not found"}); 
+        if(!player) return res.status(400).send({ 
+            //status: "fail", 
+            message: "User not found"}); 
     
         //cast dice
         let dice1 = Math.floor(Math.random() * 6 + 1)
@@ -29,13 +36,13 @@ const playGame = async function (req, res) {
         await Scores.create(score);
 
         res.status(200).send({
-            status: "success",
+            //status: "success",
             game: score
         });
 
     } catch (err) {
             res.status(500).send({
-            status: 'error',
+            //status: 'error',
             message: err.message
         })
     }
@@ -45,16 +52,18 @@ const playGame = async function (req, res) {
 //getScores by player id
 const getScores = async function (req, res) {
     
-    try {
+        try {
 
-        const reqId = parseInt(req.params.id)
+        const reqId = req.params.id;
 
         const player = await Players.findOne({
             where: { id: reqId },
             });
         
             // check if player exists
-            if(!player) return res.status(400).send({ status: "fail", message: "User not found"}); 
+            if(!player) return res.status(400).send({ 
+                //status: "fail", 
+                message: "User not found"}); 
        
             // Get the pertinent scores 
             let scores = await Scores.findAll({
@@ -62,13 +71,13 @@ const getScores = async function (req, res) {
               });
         
             res.status(200).send({
-            status: "success",
+            //status: "success",
             scores
         });
 
     } catch (err) {
         res.status(500).send({
-            status: 'error',
+            //status: 'error',
             message: err.message
         })
     }
@@ -78,28 +87,36 @@ const getScores = async function (req, res) {
 //delete scores by player id
 const deleteScores = async function (req, res) {
     
+    
+    
     try {
+
+        let reqId = req.params.id;
+        
+    
         const player = await Players.findOne({
-            where: { id: parseInt(req.params.id) },
+            where: { id: reqId },
             });
         
             // check if player exists
-            if(!player) return res.status(400).send({ status: "fail", message: "User not found"}); 
+            if(!player) return res.status(400).send({ 
+                //status: "fail",
+                message: "User not found"}); 
        
             // delete all scores
             await Scores.destroy({
                 where: {playerId: player.id}});
         
             res.status(200).send({
-            status: "success",
-            data: {playerId: player.id,
+                //status: "success",
+                data: {playerId: player.id,
                 message: 'Scores successfully deleted.'
             }
         });
 
     } catch (err) {
         res.status(500).send({
-            status: 'error',
+            //status: 'error',
             message: err.message
         })
     }

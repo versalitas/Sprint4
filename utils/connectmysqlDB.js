@@ -14,8 +14,8 @@ const initDB = async() => {
     user: process.env.DB_USER /*|| "root"*/,
     password: process.env.DB_PASSWORD /*|| "enunlugardelamancha"*/});
     
-    await connection.connect();
     await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbName};`);
+    await connection.connect();
     console.info("Database created or successfully checked");
     await connection.end();
 
