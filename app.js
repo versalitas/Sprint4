@@ -6,7 +6,7 @@ const express = require('express');
 //connecting to DB
 const initDB = require('./utils/connectmysqlDB.js');
 
-//requiering routes
+//requireing routes
 const login = require('./routes/login.js');
 const playersRoutes = require('./routes/players.js');
 const gamesRoutes = require('./routes/games.js');
@@ -17,7 +17,7 @@ const app = express();
 
 const port = process.env.API_PORT || 3001;
 
-// requiering middleware
+// requireing middleware
 const checkToken = require('./middlewares/checkToken.js');
 
 //starting DB
