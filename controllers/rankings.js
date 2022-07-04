@@ -29,12 +29,13 @@ const getWinner = async (req, res) => {
     try {
         
         let ranking = await findRanking();
+        
         //winner postition 0 of array
         let winner = ranking.playerranking[0];
-        //if (!winner) winner= {};
+        if (!winner){winner = 'No winner yet'};
         
         res.status(200).send({
-            status: "success",
+            //status: "success",
             winner
         });
         
@@ -53,17 +54,17 @@ const getLoser = async (req, res) => {
 
         //last postiton of ranking
         let loser = ranking.playerranking[ranking.playerranking.length -1];
-        //if (!loser) loser = {};
+        if (!loser){loser = 'No winners nor losers yet!'};
         
         res.status(200).send({
-            status: "success",
+            //status: "success",
             loser
         });
         
 
     } catch (err) {
         res.status(500).send({
-            status: 'error',
+            //status: 'error',
             message: err.message
         })
     }

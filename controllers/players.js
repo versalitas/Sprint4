@@ -15,7 +15,9 @@ const addPlayer = async (req, res) => {
             });
 
             if(isRegistered){
-                return res.status(400).send({ status: "fail", message: "Username is not unique"}); 
+                return res.status(400).send({ 
+                    //status: "fail", 
+                    message: "Username is not unique"}); 
             }
 
             player = await Players.create({ username: userName})
@@ -26,7 +28,7 @@ const addPlayer = async (req, res) => {
         }
             
             res.status(200).send({
-                status: "success",
+                //status: "success",
                 message: "User has succesfully been created.",
                 data: {
                     id: player.id,
@@ -45,10 +47,11 @@ const addPlayer = async (req, res) => {
 
 //update name
 const updatePlayer = async (req,res) => {
-    
+
     try {
+
+        const userId = req.params.id;
         
-        const userId = parseInt(req.params.id);
         const userName = req.body.username;
 
         //search for user
@@ -56,22 +59,30 @@ const updatePlayer = async (req,res) => {
         
         //if id correspond to registered user
         if (!player) {
-            return res.status(400).send({status: 'fail', message: 'Bad request: id not valid.'})
+            return res.status(400).send({
+                //status: 'fail', 
+                message: 'Bad request: id not valid.'})
         }
         //if req.body contains new userName 
         if(!userName){
-            return res.status(400).send({status: 'fail', message: 'Bad request: username not defined.'})
+            return res.status(400).send({
+                //status: 'fail', 
+                message: 'Bad request: username not defined.'})
         }
         //if new userName is unique
         const isUnique = await Players.findOne({where: {username: userName}});
 
         if(isUnique){
-            return res.status(400).send({status: 'fail', message: 'Bad request: username is not unique.'})
+            return res.status(400).send({
+                //status: 'fail', 
+                message: 'Bad request: username is not unique.'})
         }
         
        //update property
-        player.name = userName;
-        await player.save();
+       await Players.update(
+        { username: userName},
+        { where: { id: userId } }
+    );
 
         res.status(200).send({status: 'success', message: "Username has been updated correctly."})
 
@@ -100,8 +111,17 @@ const getPlayers = async(req, res) => {
         players = players.map(obj => {
             obj.dataValues.win = Math.floor(obj.dataValues.win * 100)
             return obj});
+
+      if(players === []){
+        res.status(200).send({
+            
+            message: 'No players registered.'})
+
+      }      
      
-     res.status(200).send({status: 'success', message: players})
+     res.status(200).send({
+         //status: 'success', 
+         message: players})
 
      } catch(err) {
          res.status(500).send({
