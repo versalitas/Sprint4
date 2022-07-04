@@ -2,52 +2,18 @@
 //https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs
 
 const jwt = require('jsonwebtoken');
-const { validationResult } = require('express-validator');
+const jwtSecretToken = process.env.TOKEN_SECRET_KEY;
 
-const verifyToken = (req, res, next) => {
-
-    const token = req.header('jwt-token');
-
-    if(!token){
-        res.status(401).json({status:'fail',
-            message: "Access denied, missing token."
-        });
-        return;
-    }
-
+module.exports = (req, res, next) => {
     try {
-        
-        const payload = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-       
-        next();  
-
+        const token = req.headers.authorization.split(" ")[1];
+        jwt.verify(token, jwtSecretToken);
+        next();
     } catch (error) {
-       
-        res.status(401).json({status:'fail',
-            messagw: 'Invalid token.'
-        });
-        return;
+        res.status(401).json({ message: "Verification failed." });
     }
-
-}
-
-//https://express-validator.github.io/docs/validation-result-api.html
-const validate = ( req, res, next ) => {
-    const error = validationResult(req);
-    if ( !error.isEmpty()) {
-        return res.status(400).send({
-            status: 'fail',
-            error
-        })
-    }
-    next();
-
-}
+};
 
 
 
 
-
-
-
-module.exports = {verifyToken,validate}

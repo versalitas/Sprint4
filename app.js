@@ -8,31 +8,30 @@ const initDB = require('./utils/connectmysqlDB.js');
 
 //requiering routes
 const login = require('./routes/login.js');
-
 const playersRoutes = require('./routes/players.js');
 const gamesRoutes = require('./routes/games.js');
 const rankingsRoutes = require('./routes/rankings.js');
-//const {verifyToken} = require('./middlewares/jwt_middleware.js');
+
+
 const app = express();
 
 const port = process.env.API_PORT || 3001;
 
+// requiering middleware
+const checkToken = require('./middlewares/checkToken.js');
+
+//starting DB
 initDB();
 
 // Config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.all('/api', verifyToken);
 
-//app.use('/api', login);
-
-// Middlewares
-
-
-app.use('/api', playersRoutes);
-app.use('/api', gamesRoutes);
-app.use('/api', rankingsRoutes);
+app.use('/api', login);
+app.use('/api', checkToken, playersRoutes);
+app.use('/api', checkToken, gamesRoutes);
+app.use('/api', checkToken, rankingsRoutes);
 
 
 //invalid route handling

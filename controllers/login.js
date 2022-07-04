@@ -10,8 +10,9 @@ module.exports = async (req, res) => {
     const { ADMIN_NAME, ADMIN_PASSWORD, TOKEN_SECRET_KEY } = process.env;
  
     if (username !== ADMIN_NAME || password !== ADMIN_PASSWORD ) {
-        res.status(401).json({status:'fail',
-            message: 'Incorrect username or password'
+        res.status(401).json({
+            //status:'fail',
+            message: 'Authentication failed.Incorrect username or password'
         });
         return;
     }
@@ -25,10 +26,12 @@ module.exports = async (req, res) => {
       expiresIn: 1440
       });
       
+      //created accessToken
       res.json(accessToken);
+    
     } catch (err) {
         res.status(500).send({
-            status: 'error',
+            //status: 'error',
             message: err.message
         })
     }
