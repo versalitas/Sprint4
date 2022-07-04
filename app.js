@@ -3,7 +3,7 @@
 require('dotenv').config();
 const express = require('express');
 
-
+//connecting to DB
 const initDB = require('./utils/connectmysqlDB.js');
 
 //requiering routes
