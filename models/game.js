@@ -32,13 +32,13 @@ const Players = sequelize.define('players', {
 Players.hasMany(Scores); 
 Scores.belongsTo(Players);
 
-Players.sync()
+/*Players.sync()
 .then()
 .catch(err => console.log(err));
 
 Scores.sync()
 .then()
-.catch(err => console.log(err));
+.catch(err => console.log(err));*/
 
 
 module.exports = {Players, Scores};

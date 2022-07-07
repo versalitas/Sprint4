@@ -7,7 +7,7 @@ const {Sequelize} = require('sequelize');
 const dbName = process.env.DB_NAME /*|| "GAME"*/;
 
 const initDB = async() => { 
-    
+    try {
     const connection = await mysql.createConnection({
     host: process.env.DB_HOST /*|| "127.0.0.1"*/,
     port: process.env.DB_PORT /*|| "3306"*/,
@@ -15,13 +15,13 @@ const initDB = async() => {
     password: process.env.DB_PASSWORD /*|| "enunlugardelamancha"*/});
     
     await connection.query(`CREATE DATABASE IF NOT EXISTS ${dbName};`);
-    await connection.connect();
+    await sequelize.sync({ force: false });
     console.info("Database created or successfully checked");
-    await connection.end();
+    } catch(error){
+        console.error('Connection failed', error);
+    }
 
-   
 };
-
 
 module.exports = initDB;
 
@@ -29,39 +29,3 @@ module.exports = initDB;
 
 
 
-
-
-
-
-
-
-
-/*
-
-require('dotenv').config();
-const mysql = require('mysql2/promise');
-//const { Sequelize } = require('sequelize');
-
-
-
-
-
-
-
-
-
-}
-    
-    // connect to db
-    const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
-
-    // init models and add them to the exported db object
-    db.User = require('../users/user.model')(sequelize);
-
-    // sync all models with database
-    await sequelize.sync();
-   
-}*/
-
-
-//module.exports = connectDB;

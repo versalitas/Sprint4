@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
       });
       
       //created accessToken
-      res.json(accessToken);
+      res.json({accessToken});
     
     } catch (err) {
         res.status(500).send({
