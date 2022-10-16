@@ -88,7 +88,7 @@ REpresentational State Transfer
 
 Each side can be changed independently without affecting the other side.
 
-Since they know the format of exchange they can be kepy modular and separate. Fleixibilty and scalability.
+Since they know the format of exchange they can be kept modular and separate. Fleixibilty and scalability.
 
 #### Statelessness:
 
