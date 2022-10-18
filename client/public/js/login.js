@@ -32,7 +32,7 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
             sessionStorage.accessToken = data.accessToken;
 
             // Go to chat window
-            window.location.assign('../html/chat.html');
+            window.location.assign('./html/chat.html');
 
             }   
 
