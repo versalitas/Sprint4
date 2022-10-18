@@ -63,9 +63,19 @@ The default room is Hall.
 Users can create and join rooms. 
 There are lists of rooms and users.
 Disconnect via icon. 
-Only apt for desktop and tablet...
+Only apt for desktop...
 ![chat_main](https://user-images.githubusercontent.com/100954079/196164700-c9cfa09c-dbbb-4839-9397-834b8fda7ae2.png)
 
+
+### TODO ...
+
+- separate ports for backend and frontend
+- add google auth
+- add colors to chat bubbles
+- improve design 
+- @media only screen and (min-device-width: 480px){}  
+- @media only screen and (min-device-width: 768px){}
+- do frontend with react...
 
 ### SERVER
 
@@ -73,6 +83,7 @@ Server runs with express and http modules.
 
 Connecting frontend - backend:
 https://stackabuse.com/serving-static-files-with-node-and-express-js/
+
 
 ### SOCKET.io
 
@@ -163,30 +174,9 @@ https://javascript.plainenglish.io/how-to-add-options-to-an-html-select-element-
 sort unordered list
 //https://es.stackoverflow.com/questions/259945/ordenar-ul-javascript
 
-### TODO on a rainy day...
 
-- add google auth
-- add refresh token
-- add @media for smartphones
-- add user can only have on session
-- investigate if it matters if you npm init inside server folder or outside?
-- add colors to chat bubbles
-- do frontend with react...
-- improve design
-### Project Structure
 
-Main structure of node.js project. 
 
-- <b>app</b>:
-    - <b>controllers</b> 
-    - <b>middleware</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>utils</b>
-    - <b>.env.example</b>
-    - <b>app.js</b>. Entry point.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
-- <b>package.json</b>.
 
 
 

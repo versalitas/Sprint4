@@ -1,19 +1,23 @@
 require('dotenv').config();
+const cors = require('cors');
 
 //preparing server and socket server
 const express = require('express')
 const app = express();
 const server = require('http').Server(app)
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+    cors: {
+        origins: ['http://localhost:5000','ws://localhost:50000']}
+    });
 
-const cors = require('cors');
+
 
 // Connect to database
 require('./utils/connectDB.js')();
 
 // Middlewares
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 
 //express static middleware serving the front end
 app.use(express.static("../public/"));
