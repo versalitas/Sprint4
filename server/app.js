@@ -6,11 +6,14 @@ const app = express();
 const server = require('http').Server(app)
 const io = require('socket.io')(server);
 
+const cors = require('cors');
+
 // Connect to database
 require('./utils/connectDB.js')();
 
 // Middlewares
 app.use(express.json());
+app.use(cors);
 
 //express static middleware serving the front end
 app.use(express.static("../public/"));
