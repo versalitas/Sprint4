@@ -1,7 +1,7 @@
 document.querySelector('.entry-form').addEventListener("submit", e => {
     e.preventDefault();
 
-    sessionStorage.clear();
+    //sessionStorage.clear();
 
     const userName = document.querySelector('.entry-form [name="username"]').value;
     const password = document.querySelector('.entry-form [name="password"]').value;
@@ -16,6 +16,16 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
     .then(data => {
         if (data.status === "success") {
 
+           if( sessionStorage.userId == data.user.userId &&
+            sessionStorage.userName == data.user.userName
+           ){
+
+            document.getElementById("login-error").innerHTML = 'You already have a session.';
+            
+            } else {
+
+            sessionStorage.clear();
+
             // Store session variables
             sessionStorage.userId = data.user.userId;
             sessionStorage.userName = data.user.userName;
@@ -23,6 +33,8 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
 
             // Go to chat window
             window.location.assign('../html/chat.html');
+
+            }   
 
         } else {
             document.getElementById("login-error").innerHTML = data.message;
