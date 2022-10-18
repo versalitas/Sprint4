@@ -1,4 +1,4 @@
-function sendMessage(form) {
+const sendMessage = (form) => {
     //retrieve message from chat-form input, room and user from sessionStorage
     const text = form.newMessage.value;
     const user = {userId: sessionStorage.userId, userName: sessionStorage.userName};
@@ -16,17 +16,15 @@ function sendMessage(form) {
 }
 
 //outout chat messages to dom
-function displayMessage(message) {
-    
-    // current message list on display
+const displayMessage = (message) =>{
+    //current message list on display
     let messageList = document.getElementById("messageList");
-
-    // create element with current message to append to current message list
+  //create element with current message to append to current message list
     let li = document.createElement('li');
     li.classList.add('chat-li')
     li.textContent = message.text;
 
-    // retrieve last inserted ul element 
+    //retrieve last inserted ul element 
     let ul = document.getElementById('lastMessage');
 
     // append if last message has same user.id as current
@@ -36,13 +34,13 @@ function displayMessage(message) {
     } else {
         if (ul) document.getElementById("lastMessage").removeAttribute("id");
 
-        // Create new ul element
+        //create new ul element
         ul = document.createElement('ul');
         ul.setAttribute('id', 'lastMessage');
         ul.setAttribute('userId', message.user.userId)
 
-         // separate user from users 
-         // align user's messages to the right (css)
+         //separate USER from users 
+         // align USER's messages to the right (css)
         if (message.user.userId === sessionStorage.userId) {
             ul.classList.add('myMessage')
         } else {
@@ -62,7 +60,7 @@ function displayMessage(message) {
 }
 
 //output user joining room
-function displayJoinMessage(message) {
+const displayJoinMessage = (message) => {
 
     // console.log('displayJoinMessage', message)
 
@@ -76,7 +74,6 @@ function displayJoinMessage(message) {
     li.textContent = message;
     li.setAttribute('id', 'lastMessage');
     
-
     messageList.append(li);
 
     //scroll to bottom

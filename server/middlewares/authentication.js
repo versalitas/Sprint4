@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const {Users} = require('../models/models.js');
 
-const authentication = async (req, res, next) => {
+const authentication = async(req, res, next) => {
 
     const userName = req.body.userName;
     const password = req.body.password;

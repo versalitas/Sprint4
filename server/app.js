@@ -7,9 +7,9 @@ const app = express();
 const server = require('http').Server(app)
 const io = require('socket.io')(server, {
     cors: {
-        origins: ['http://localhost:5000','ws://localhost:50000']}
+        origins: ['http://localhost:5000',
+        'ws://localhost:50000']}
     });
-
 
 
 // Connect to database
