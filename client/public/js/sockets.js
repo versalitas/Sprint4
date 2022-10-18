@@ -10,17 +10,12 @@ let socketConnected = false;
 
 socket.on('connect', () => {
 
-  // console.log('Socket connected');
-  // console.log(`userName: ${sessionStorage.userName}`)
-  // console.log(`userId: ${sessionStorage.userId}`)
-  // console.log(`accessToken: ${sessionStorage.accessToken}`)
-    
-  //displays new message in chat
+     //display new message in chat
     socket.on('new-message', message => {
         // console.log("new-message", message);
         displayMessage(message);
     })
-    //emits join message to chat
+    //emit join message to chat
     socket.on('new-join-message', message => {
         // console.log("new-join-message", message);
         displayJoinMessage(message);
@@ -35,8 +30,7 @@ socket.on('connect', () => {
     })
 
     socket.on('update-room-users', (room, users) => {
-        // console.log('update-room-users', room, users);
-
+        
         // Display updated list
         if (sessionStorage.roomId === room.roomId) {
             displayUsers(users)
@@ -46,7 +40,7 @@ socket.on('connect', () => {
   
     //disconnect user
     socket.on('disconnect', () => {
-      // console.log('Socket disconnected')
+      
     });
 
     // Delete room list

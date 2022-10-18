@@ -1,8 +1,6 @@
 document.querySelector('.entry-form').addEventListener("submit", e => {
     e.preventDefault();
 
-    //sessionStorage.clear();
-
     const userName = document.querySelector('.entry-form [name="username"]').value;
     const password = document.querySelector('.entry-form [name="password"]').value;
     const apiUrl = 'http://localhost:3000';
@@ -15,7 +13,7 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
     .then(response => response.json())
     .then(data => {
         if (data.status === "success") {
-
+           //check if session is already initiated
            if( sessionStorage.userId == data.user.userId &&
             sessionStorage.userName == data.user.userName
            ){

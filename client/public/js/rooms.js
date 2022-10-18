@@ -1,4 +1,3 @@
-
 const createRoom = () => {
     const newRoomName = document.getElementById("roomForm").newRoom.value;
 
@@ -9,8 +8,7 @@ const createRoom = () => {
     return false;
  }
 
-
-function joinRoom(room) {
+const joinRoom = (room) => {
     // console.log('joinRoom', room)
 
     // Check if room other than current

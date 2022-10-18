@@ -45,14 +45,16 @@ ul,li {
     margin: 0;
 }
 
+
+
 /* ERROR */
 
 .error {
-    font-style: italic;
+    
     font-weight: bold;
     font-size: 0.8rem;
     text-align: center;
-    color: red;
+    color: var(--blue);
 }
 
 

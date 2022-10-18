@@ -1,4 +1,4 @@
-function sendMessage(form) {
+const sendMessage = (form) => {
     //retrieve message from chat-form input, room and user from sessionStorage
     const text = form.newMessage.value;
     const user = {userId: sessionStorage.userId, userName: sessionStorage.userName};
@@ -16,7 +16,7 @@ function sendMessage(form) {
 }
 
 //outout chat messages to dom
-function displayMessage(message) {
+const displayMessage = (message) => {
     
     // current message list on display
     let messageList = document.getElementById("messageList");
@@ -41,9 +41,10 @@ function displayMessage(message) {
         ul.setAttribute('id', 'lastMessage');
         ul.setAttribute('userId', message.user.userId)
 
-         // separate user from users 
-         // align user's messages to the right (css)
+         // separate USER from users 
+         // align USER's messages to the right (css)
         if (message.user.userId === sessionStorage.userId) {
+            
             ul.classList.add('myMessage')
         } else {
             // align other users's messages to the left (css)
@@ -62,9 +63,7 @@ function displayMessage(message) {
 }
 
 //output user joining room
-function displayJoinMessage(message) {
-
-    // console.log('displayJoinMessage', message)
+const displayJoinMessage = (message) =>{
 
     document.getElementById('lastMessage').removeAttribute('id');
 
@@ -72,11 +71,9 @@ function displayJoinMessage(message) {
 
     // Create the element to append
     let li = document.createElement('li');
-    li.classList.add('chat-li--join')
+    li.classList.add('chat-li-join')
     li.textContent = message;
     li.setAttribute('id', 'lastMessage');
-    
-
     messageList.append(li);
 
     //scroll to bottom
