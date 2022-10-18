@@ -70,6 +70,7 @@ Only apt for desktop...
 ### TODO ...
 
 - separate ports for backend and frontend
+https://stackoverflow.com/questions/15313274/node-js-https-api-server-but-http-for-static-files
 - add google auth
 - add colors to chat bubbles
 - improve design 

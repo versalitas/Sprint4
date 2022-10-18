@@ -8,7 +8,7 @@ document.querySelector(".entry-form").addEventListener('submit', e => {
     const password = document.querySelector('.entry-form [name="password"]').value;
     const rePassword = document.querySelector('.entry-form [name="repassword"]').value;
     const registerError = document.querySelector("#register-error");
-    const apiUrl = 'http://localhost:3000';
+    const apiUrl = 'http://localhost:5000';
 
      //checking if repeted password match original 
     if (password !== rePassword) {
