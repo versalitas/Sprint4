@@ -1,6 +1,6 @@
-const sendMessage = (form) => {
+const sendMessage = () => {
     //retrieve message from chat-form input, room and user from sessionStorage
-    const text = form.newMessage.value;
+    const text = document.querySelector('.chat-form input[name="newMessage"]').value;
     const user = {userId: sessionStorage.userId, userName: sessionStorage.userName};
     const room = {roomId: sessionStorage.roomId, roomName: sessionStorage.roomName};
     
@@ -9,7 +9,7 @@ const sendMessage = (form) => {
         let message = {user, room, text};
         socket.emit('new-message', message);
         displayMessage(message);
-        form.newMessage.value = '';
+        document.querySelector('.chat-form input[name="newMessage"]').value = '';
     }
 
     return false;
