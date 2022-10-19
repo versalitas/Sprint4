@@ -1,9 +1,9 @@
-//sort Hall to top and order buttonlist
+//sort Limb to top and order buttonlist
 const sortBtnList = (btn) => {
     let buttonList = document.getElementById(btn);
     let buttonArray = Array.from(buttonList.getElementsByTagName("BUTTON"))
-    let hall = buttonArray.shift(); 
-    buttonList.append(hall);
+    let limbo = buttonArray.shift(); 
+    buttonList.append(limbo);
     buttonArray.sort((a, b) => {
             return a.textContent.localeCompare(b.textContent)
         })

@@ -122,7 +122,7 @@ module.exports = async (io) => {
             }
         })
         
-        socket.on('disconnect', async () => {
+        socket.on('disconnect', async() => {
             
             let disconnectedUser = await disconnectUser(user);
            

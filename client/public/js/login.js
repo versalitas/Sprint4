@@ -16,9 +16,8 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
            
             //avoid multiple sessions
            if( sessionStorage.userId == data.user.userId &&
-            sessionStorage.userName == data.user.userName
-           ){
-            document.getElementById("login-error").innerHTML = 'You already have a session.';
+            sessionStorage.userName == data.user.userName)
+            {document.getElementById("login-error").innerHTML = 'You already have a session.';
             } else {
             sessionStorage.clear();
             
@@ -29,7 +28,6 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
 
             // Go to chat window
             window.location.assign('./html/chat.html');
-
             }   
 
         } else {

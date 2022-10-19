@@ -9,8 +9,6 @@ const createRoom = () => {
  }
 
 const joinRoom = (room) => {
-    // console.log('joinRoom', room)
-
     // Check if room other than current
     if (sessionStorage.roomId === room.roomId) return;
 

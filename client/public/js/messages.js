@@ -63,9 +63,7 @@ const displayMessage = (message) =>{
 //output user joining room
 const displayJoinMessage = (message) => {
 
-    // console.log('displayJoinMessage', message)
-
-    document.getElementById('lastMessage').removeAttribute('id');
+   document.getElementById('lastMessage').removeAttribute('id');
 
     let messageList = document.getElementById('messageList');
 
