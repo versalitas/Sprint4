@@ -1,6 +1,7 @@
 require('dotenv').config();
 const cors = require('cors');
 
+
 //preparing server and socket server
 const express = require('express')
 const app = express();
@@ -27,6 +28,7 @@ app.use(cors());
 // Routes
 app.use('/register', require('./routes/register.js'));
 app.use('/login', require('./routes/login.js'));
+
 
 //invalid route handling
 app.use((req, res) => res.status(404).send({ status: "fail", message: "PAGE NOT FOUND"}));
