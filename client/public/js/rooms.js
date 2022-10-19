@@ -1,4 +1,3 @@
-
 const createRoom = () => {
     const newRoomName = document.getElementById("roomForm").newRoom.value;
 
@@ -8,7 +7,6 @@ const createRoom = () => {
      }
     return false;
  }
-
 
 const joinRoom = (room) => {
     // console.log('joinRoom', room)

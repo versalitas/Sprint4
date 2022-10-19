@@ -42,6 +42,7 @@ const displayMessage = (message) =>{
          //separate USER from users 
          // align USER's messages to the right (css)
         if (message.user.userId === sessionStorage.userId) {
+            
             ul.classList.add('myMessage')
         } else {
             // align other users's messages to the left (css)
@@ -70,10 +71,9 @@ const displayJoinMessage = (message) => {
 
     // Create the element to append
     let li = document.createElement('li');
-    li.classList.add('chat-li--join')
+    li.classList.add('chat-li-join')
     li.textContent = message;
     li.setAttribute('id', 'lastMessage');
-    
     messageList.append(li);
 
     //scroll to bottom

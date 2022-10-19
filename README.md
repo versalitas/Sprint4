@@ -1,8 +1,13 @@
 # CHAT with SOCKET.IO, NODE.js, EXPRESS 
+
+The server and client are separately served.
+Server run on API_PORT and client on CLIENT_PORT.
  
 ### Instructions:
 
 Clone repository.
+
+#### Starting server:
 
 ```
 cd server
@@ -27,6 +32,9 @@ API_PORT=3000
 
 ACCESS_TOKEN_KEY=somethingwickedcomesthisway
 
+CLIENT_PORT=5000
+CLIENT_HOST=localhost
+
 ```
 
 Run server with
@@ -41,13 +49,47 @@ or in developer mode
 npm run dev
 ```
 
+<<<<<<< HEAD
 The client and server are served by the same port 
 through express static middleware.
 If process.env.API_PORT variable is 3000, open browser and go to:
+=======
+### starting client server
 
-````
-http://localhost:3000/
-````
+```
+cd client
+```
+Initialize terminal from inside the project folder.
+Install node modules.
+
+```
+npm install
+
+```
+Convert .env.example to .env and adapt pertinent variables to current environment. 
+Example of variables: 
+
+```
+
+CLIENT_PORT=5000
+
+```
+
+Run client server with
+
+```
+npm start
+```
+
+or in developer mode
+
+```
+npm run dev
+```
+
+OPEN UP IN http://www.localhost:5000 if using same settings as in env.example.
+>>>>>>> 5.1_dev
+
 
 The user starts out on login page. There's an option to switch to register. The logo leads to about. 
 ![chat_login](https://user-images.githubusercontent.com/100954079/196165446-e30b963b-b8ed-4b6f-a26e-96c9bb8ed2b9.png)
@@ -55,7 +97,7 @@ The user starts out on login page. There's an option to switch to register. The 
 Register has an option for getting back to login.
 ![chat_register](https://user-images.githubusercontent.com/100954079/196165412-7c0d9080-08bd-415b-b35e-85f0ac0fa4a6.png)
 
-About has options to get back to logon via logo or a clickable text.
+About has options to get back to login via logo or a clickable text.
 ![chat_about](https://user-images.githubusercontent.com/100954079/196165481-3fda4bf7-7f6e-4f31-90aa-7351c1cf6fd8.png)
 
 After successful authentication user gets access to app. 
@@ -63,7 +105,11 @@ The default room is Hall.
 Users can create and join rooms. 
 There are lists of rooms and users.
 Disconnect via icon. 
+<<<<<<< HEAD
 Only apt for desktop...
+=======
+Only apt for desktop.
+>>>>>>> 5.1_dev
 ![chat_main](https://user-images.githubusercontent.com/100954079/196164700-c9cfa09c-dbbb-4839-9397-834b8fda7ae2.png)
 
 
@@ -138,6 +184,8 @@ https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/
 GENERAL (stitching together a chat):
 
 https://github.com/StratocasterO/masterclasses-it-academy/tree/master/2022_07_12%20frontend
+
+https://www.youtube.com/watch?v=jD7FnbI76Hg
 
 https://stackfame.com/mongodb-chat-schema-mongoose-chat-schema-chat-application
 

@@ -5,10 +5,14 @@ const cors = require('cors');
 const express = require('express')
 const app = express();
 const server = require('http').Server(app)
+
+const CLIENT_HOST = process.env.CLIENT_HOST;
+const CLIENT_PORT = process.env.CLIENT_PORT;
+
 const io = require('socket.io')(server, {
     cors: {
-        origins: ['http://localhost:5000',
-        'ws://localhost:50000']}
+        origins: [`http://${CLIENT_HOST}:${CLIENT_PORT}`,
+        `ws://${CLIENT_HOST}:${CLIENT_PORT}`]}
     });
 
 
@@ -19,8 +23,6 @@ require('./utils/connectDB.js')();
 app.use(express.json());
 app.use(cors());
 
-//express static middleware serving the front end
-app.use(express.static("../public/"));
 
 // Routes
 app.use('/register', require('./routes/register.js'));
@@ -34,3 +36,6 @@ require('./sockets/sockets.js')(io);
 
 PORT = process.env.API_PORT || 3000
 server.listen(PORT, console.log(`Server listening on port ${PORT}`));
+
+
+

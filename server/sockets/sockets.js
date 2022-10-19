@@ -71,7 +71,7 @@ module.exports = async (io) => {
             }
         })
         
-        //join room, leave old and inform about change
+        //join room, leave old, and inform about change
         socket.on('join-room', async (room) => {
 
             let joinedRoom = await joinRoom(user, room);
@@ -89,8 +89,13 @@ module.exports = async (io) => {
                     
                     // get the room's #users
                     let formerUsers = await getUsers(joinedRoom.oldRoom);
+<<<<<<< HEAD
                     
                     // inform #users from former room
+=======
+
+                    // update #users former room
+>>>>>>> 5.1_dev
                     io.emit('update-room-users', joinedRoom.oldRoom, formerUsers.users);
                 }
 
