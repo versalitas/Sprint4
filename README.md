@@ -105,7 +105,6 @@ Only apt for desktop.
 
 ### TODO ... WISHLIST
 
-
 - add google auth
 - improve design 
   @media only screen and (min-device-width: 480px){}  
