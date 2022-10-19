@@ -49,11 +49,6 @@ or in developer mode
 npm run dev
 ```
 
-<<<<<<< HEAD
-The client and server are served by the same port 
-through express static middleware.
-If process.env.API_PORT variable is 3000, open browser and go to:
-=======
 ### starting client server
 
 ```
@@ -88,7 +83,6 @@ npm run dev
 ```
 
 OPEN UP IN http://www.localhost:5000 if using same settings as in env.example.
->>>>>>> 5.1_dev
 
 
 The user starts out on login page. There's an option to switch to register. The logo leads to about. 
@@ -105,11 +99,7 @@ The default room is Hall.
 Users can create and join rooms. 
 There are lists of rooms and users.
 Disconnect via icon. 
-<<<<<<< HEAD
-Only apt for desktop...
-=======
 Only apt for desktop.
->>>>>>> 5.1_dev
 ![chat_main](https://user-images.githubusercontent.com/100954079/196164700-c9cfa09c-dbbb-4839-9397-834b8fda7ae2.png)
 
 
