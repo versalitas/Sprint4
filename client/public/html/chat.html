@@ -21,7 +21,6 @@
        <div class="chat-container">
             <div id="room" class="room">
                 <button class="room-header" type="button">Rooms</button>
-                <button class="room-header collapse" type="button" onclick="showRooms()">Rooms</button>
                 <form id="roomForm" class="room-form" onsubmit="createRoom()">
                     <input class="input" type="text" id="newRoom" name="newRoom" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>
                     <input class="button" type="submit" value="+">
@@ -37,7 +36,6 @@
             </div>
             <div id="user" class="user">
                 <button class="user-header" type="button">Users</button>
-                <button class="user-header collapse" type="button" onclick="showUsers()"><strong>USERS</strong></button>
                 <ul id="userList" class="user-ul"></ul>
             </div>
         </div>

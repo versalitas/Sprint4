@@ -45,8 +45,6 @@ ul,li {
     margin: 0;
 }
 
-
-
 /* ERROR */
 
 .error {
@@ -397,14 +395,6 @@ label{
 .user-li {
     padding: 0.25rem 1rem;
     word-break: break-all;
-}
-
-
-
-/* COLLAPSIBLE */
-
-.collapse {
-    display: none;
 }
 
 
