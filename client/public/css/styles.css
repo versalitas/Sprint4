@@ -407,7 +407,7 @@ label{
 
 
 
-/* TABLET */
+/* MEDIA QUERIES */
 @media (max-width: 1100px) {
     
     .user {
@@ -425,3 +425,102 @@ label{
     }
 }
 
+@media (max-device-width: 820px){
+
+   
+
+     .chat {
+        max-width: 100% !important;
+        position: absolute;
+        left: 0.1rem;
+        right: 0.1rem;
+        top: 4rem;
+        bottom: 1em;
+        width: auto;
+        z-index: 1;
+        overflow-x: hidden !important;
+    }
+   
+    .d-none,
+    .current-room, 
+    .header-username,
+    .header-roomname 
+    .user-ul, 
+    .room-ul, 
+    .room-form, 
+    .room-header, 
+    .user-header {
+        display: none;
+    }
+    
+    .d-block, 
+    .collapse,
+    .user.responsive 
+    .user-ul,
+    .room.responsive 
+    .room-ul{
+        display: block;
+    }
+
+    .room.responsive 
+    .room-form {
+        display: flex;
+    }
+
+    .room-header {
+        border-right: 2px solid var(--color)
+    }
+
+    
+
+    .user, 
+    .room {
+        min-width: unset;
+        max-width: unset;
+        width: 50%;
+        top: 0;
+    
+    }
+    
+    .user {
+        right: 0;
+    }
+    
+    .room {
+        left: 0;
+    }
+
+    .user.responsive,
+    .room.responsive {
+    width: 100%;
+    }
+
+
+    .user.responsive 
+    .user-header,
+    .room.responsive 
+    .room-header{
+    background-color: var(--background-color);
+    color: var(--color);
+    }
+
+    .user-header:hover, 
+    .room-header:hover {
+        cursor: pointer;
+        background-color: var(--background-color);
+        color: var(--blue);
+        }
+
+    .room__header {
+        border-right: 2px solid var(--color)
+    }
+
+    .room__header, 
+    .user__header {
+        display: none;
+    }
+
+    .collapse {
+        display: block;
+    }
+}
