@@ -8,9 +8,9 @@ document.querySelector(".entry-form").addEventListener('submit', e => {
     const password = document.querySelector('.entry-form [name="password"]').value;
     const rePassword = document.querySelector('.entry-form [name="repassword"]').value;
     const registerError = document.querySelector("#register-error");
-    const apiUrl = 'http://localhost:5000';
+    const apiUrl = 'http://localhost:3000';
 
-     //checking if repeted password match original 
+     //checking if repeted password matches original 
     if (password !== rePassword) {
         registerError.innerHTML = 'Passwords do not match.';
         return;

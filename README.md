@@ -105,14 +105,12 @@ Only apt for desktop.
 
 ### TODO ...
 
-- separate ports for backend and frontend
-https://stackoverflow.com/questions/15313274/node-js-https-api-server-but-http-for-static-files
+
 - add google auth
-- add colors to chat bubbles
 - improve design 
-- @media only screen and (min-device-width: 480px){}  
-- @media only screen and (min-device-width: 768px){}
-- do frontend with react...
+  @media only screen and (min-device-width: 480px){}  
+  @media only screen and (min-device-width: 768px){}
+- frontend with react...
 
 ### SERVER
 

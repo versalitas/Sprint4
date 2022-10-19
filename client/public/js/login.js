@@ -3,7 +3,7 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
 
     const userName = document.querySelector('.entry-form [name="username"]').value;
     const password = document.querySelector('.entry-form [name="password"]').value;
-    const apiUrl = 'http://localhost:5000';
+    const apiUrl = 'http://localhost:3000';
 
     fetch(apiUrl +'/login', {
         method: 'post',
