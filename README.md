@@ -103,7 +103,7 @@ Only apt for desktop.
 ![chat_main](https://user-images.githubusercontent.com/100954079/196164700-c9cfa09c-dbbb-4839-9397-834b8fda7ae2.png)
 
 
-### TODO ...
+### TODO ... WISHLIST
 
 
 - add google auth
