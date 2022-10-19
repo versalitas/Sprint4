@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const {initHall, getRooms, createRoom} = require('../utils/rooms.js');
+const {initLimbo, getRooms, createRoom} = require('../utils/rooms.js');
 const {getUsers, disconnectUser, joinRoom} = require('../utils/users.js');
 const {getMessages, newMessage} = require('../utils/messages.js');
 
@@ -24,7 +24,7 @@ module.exports = async (io) => {
     io.on('connection', socket => {
 
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
-        initHall();
+        initLimbo();
 
         console.log(`user ${user.userName} connected`);
         

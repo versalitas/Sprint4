@@ -36,7 +36,7 @@ const joinRoom = (room) => {
 const displayRoom = (room) => {
 
     const btn = document.createElement('button');
-        if (room.roomName === 'Hall') {
+        if (room.roomName === 'Limbo') {
         btn.classList.add('room-btn-active');
         joinRoom(room);
     }

@@ -95,7 +95,7 @@ About has options to get back to login via logo or a clickable text.
 ![chat_about](https://user-images.githubusercontent.com/100954079/196165481-3fda4bf7-7f6e-4f31-90aa-7351c1cf6fd8.png)
 
 After successful authentication user gets access to app. 
-The default room is Hall. 
+The default room is Limbo. 
 Users can create and join rooms. 
 There are lists of rooms and users.
 Disconnect via icon. 
