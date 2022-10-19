@@ -6,7 +6,8 @@ const {getMessages, newMessage} = require('../utils/messages.js');
 
 
 module.exports = async (io) => {
-
+    
+    //authenticate socket
     io.use(function(socket, next){
         if (socket.handshake.query && socket.handshake.query.token) {
             jwt.verify(socket.handshake.query.token, process.env.ACCESS_TOKEN_KEY, function(err, decoded) {
@@ -71,7 +72,7 @@ module.exports = async (io) => {
             }
         })
         
-        //join room, leave old, and inform about change
+        //join room, leave former, and inform about change
         socket.on('join-room', async (room) => {
 
             let joinedRoom = await joinRoom(user, room);
@@ -89,13 +90,8 @@ module.exports = async (io) => {
                     
                     // get the room's #users
                     let formerUsers = await getUsers(joinedRoom.oldRoom);
-<<<<<<< HEAD
-                    
-                    // inform #users from former room
-=======
 
                     // update #users former room
->>>>>>> 5.1_dev
                     io.emit('update-room-users', joinedRoom.oldRoom, formerUsers.users);
                 }
 
@@ -111,9 +107,9 @@ module.exports = async (io) => {
                 // update current room's #users
                 io.emit('update-room-users', room, currentUsers.users);
 
-                // retrieve messages of the new room
+                // retrieve messages from the new room
                 let currentMessages = await getMessages(room);
-                // console.log('get-messages', currentMessages)
+             
                 
                 //iterate through current room's messages if any
                 if ((currentMessages.status === 'success') && (currentMessages.messages !== null)) {
@@ -132,10 +128,10 @@ module.exports = async (io) => {
            
             if (disconnectedUser.status === 'success') {
                 
-                // users leaves former room
+                // USER leaves former room
                 socket.leave(disconnectedUser.room.roomId);
                 
-                // inform that user has left the room
+                // inform that USER has left the room
                 socket.broadcast.to(disconnectedUser.room.roomId).emit('new-join-message', `${disconnectedUser.user.userName} left the room`);
 
                 // get the current #users of the room
