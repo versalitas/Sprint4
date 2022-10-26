@@ -11,7 +11,8 @@ document.querySelector(".entry-form").addEventListener('submit', e => {
     const apiUrl = 'http://localhost:3000';
 
     //check for void username or spaces
-    if(/^.+\s.+$/ || /^.+\s.+$/){
+    const regex = /\s/;
+    if(regex.test(userName)){
         registerError.innerHTML = 'White-space alert! Not a valid username.';
         return;
     }
@@ -21,7 +22,7 @@ document.querySelector(".entry-form").addEventListener('submit', e => {
         registerError.innerHTML = 'Passwords do not match.';
         return;
     }
-    console.log(password);
+   
     fetch(apiUrl + '/register', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
