@@ -10,15 +10,3 @@ const sortBtnList = (btn) => {
         .forEach(li => buttonList.append(li));
 }
 
- //add to css 
-// sort users so User is always on top
-
-const sortUserList = (ul) => {
-    let userList = document.getElementById(ul);
-    let userListArray = Array.from(list.getElementsByTagName("LI"));
-    let userName = userListArray.shift();
-    userListArray.sort((a, b) => {
-            return a.textContent.localeCompare(b.textContent)
-        })
-        .forEach(li => userList.appendChild(li));
-    }

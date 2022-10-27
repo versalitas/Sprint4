@@ -12,6 +12,5 @@ const displayUsers = (users) => {
         // append the user to the userList
         userList.append(li);
     });
-    //sortUserList("userList");
 }
    

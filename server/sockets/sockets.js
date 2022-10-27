@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const {initLimbo, getRooms, createRoom} = require('../controllers/rooms.js');
 const {getUsers, disconnectUser, joinRoom} = require('../controllers/users.js');
 const {getMessages, newMessage} = require('../controllers/messages.js');
-//const enterLimbo = require('../utils/enterLimbo.js');
+
 
 
 module.exports = async (io) => {
@@ -27,13 +27,8 @@ module.exports = async (io) => {
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
         initLimbo();
         
-        //enterLimbo(socket, user);
-
         console.log(`user ${user.userName} connected`);
 
-        
-    
-        
         
         //saving message to db before emitting back to front
         socket.on('new-message', async (message) => {

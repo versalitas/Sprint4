@@ -191,6 +191,10 @@ ul,li {
     color:var(--blue);
 }
 
+.header-username{
+    color:var(--blue);
+}
+
 .add-space{
     width:70%;
 }
