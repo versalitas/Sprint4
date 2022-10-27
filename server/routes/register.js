@@ -1,7 +1,7 @@
 const express = require('express');
 const api = express.Router();
 
-const register = require('../controller/register.js');
+const register = require('../controllers/register.js.js.js');
 
 api.post( '/',
              register);

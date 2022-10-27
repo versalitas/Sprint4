@@ -25,10 +25,13 @@ document.querySelector('.entry-form').addEventListener("submit", e => {
             sessionStorage.userId = data.user.userId;
             sessionStorage.userName = data.user.userName;
             sessionStorage.accessToken = data.accessToken;
+            
 
             // Go to chat window
             window.location.assign('./html/chat.html');
-            }   
+            } 
+            
+            
 
         } else {
             document.getElementById("login-error").innerHTML = data.message;
