@@ -8,6 +8,7 @@ const socket = io('http://localhost:3000', {
 let socketConnected = false;
 
 socket.on('connect', () => {
+      
 
      //display new message in chat
     socket.on('new-message', message => {
