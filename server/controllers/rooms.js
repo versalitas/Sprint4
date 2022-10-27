@@ -6,10 +6,10 @@ const initLimbo = async () => {
     const roomExist = await Rooms.findOne({ roomName:'Limbo' });
     
     if(!roomExist) {
-        room = await Rooms.create({ roomName:'Limbo' });
+    const room = await Rooms.create({ roomName:'Limbo' });
     }
+    
 }    
-
 
 //create room 
 const createRoom = async(roomName) => {
@@ -38,15 +38,11 @@ const getRooms = async() => {
     let result;
 
     try {
-
-        let rooms = await Rooms.find({});
-
-        rooms = rooms.map(({_id, roomName})=> { 
+         let rooms = await Rooms.find({});
+         rooms = rooms.map(({_id, roomName})=> { 
             return {roomId:_id, roomName};
           });
-
         result = {status: 'success', rooms};
-
     } catch (err) {
         result =  {status:'error', message: err.message};
     }
@@ -54,4 +50,4 @@ const getRooms = async() => {
     return result;
 }
 
-module.exports = {initLimbo, createRoom, getRooms}
+module.exports = {initLimbo, createRoom, getRooms};

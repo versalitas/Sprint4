@@ -392,6 +392,11 @@ label{
     right: 0;
 }
 
+.user-ul ul:first-of-type li:first-child {
+    
+    color:var(--blue);
+}
+
 .user-li {
     padding: 0.25rem 1rem;
     word-break: break-all;
