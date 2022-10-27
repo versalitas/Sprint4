@@ -191,6 +191,10 @@ ul,li {
     color:var(--blue);
 }
 
+.header-username{
+    color:var(--blue);
+}
+
 .add-space{
     width:70%;
 }
@@ -390,6 +394,11 @@ label{
     bottom: 2px;
     left: 0;
     right: 0;
+}
+
+.user-ul ul:first-of-type li:first-child {
+    
+    color:var(--blue);
 }
 
 .user-li {
