@@ -5,8 +5,9 @@ const createRoom = () => {
       socket.emit('new-room', newRoomName)
       document.getElementById("roomForm").newRoom.value = '';
      }
-    return false;
- }
+   }
+ 
+
 
 const joinRoom = (room) => {
     // Check if room other than current

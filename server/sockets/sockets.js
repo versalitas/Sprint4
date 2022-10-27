@@ -22,6 +22,8 @@ module.exports = async (io) => {
         }
     })
 
+    
+
     io.on('connection', socket => {
 
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};

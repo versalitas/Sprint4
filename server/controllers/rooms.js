@@ -6,7 +6,7 @@ const initLimbo = async () => {
     const roomExist = await Rooms.findOne({ roomName:'Limbo' });
     
     if(!roomExist) {
-     room = await Rooms.create({ roomName:'Limbo' });
+     const room = await Rooms.create({ roomName:'Limbo' });
     }
     
 }    
