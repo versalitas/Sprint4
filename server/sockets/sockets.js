@@ -25,16 +25,13 @@ module.exports = async (io) => {
     io.on('connection', socket => {
 
         const user = {userId: socket.decoded.userId, userName: socket.decoded.userName};
-        //initLimbo();
+        initLimbo();
         
         console.log(`user ${user.userName} connected`);
-
-        
         //saving message to db before emitting back to front
         socket.on('new-message', async (message) => {
            
             let newMsg = await newMessage(message);
-            
             if (newMsg.status === 'success') {
                 socket.broadcast.to(message.room.roomId).emit('new-message', newMsg.message);
             } else {

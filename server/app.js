@@ -20,9 +20,6 @@ const io = require('socket.io')(server, {
 // Connect to database
 require('./utils/connectDB.js')();
 
-//initialize Limbo
-const {initLimbo} = require('./controllers/rooms.js');
-initLimbo();
 
 // Middlewares
 app.use(express.json());
