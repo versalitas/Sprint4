@@ -2,7 +2,8 @@ require('dotenv').config();
 const cors = require('cors');
 
 //preparing server and socket server
-const express = require('express')
+const express = require('express');
+
 const app = express();
 const server = require('http').Server(app)
 
@@ -18,6 +19,10 @@ const io = require('socket.io')(server, {
 
 // Connect to database
 require('./utils/connectDB.js')();
+
+//initialize Limbo
+const {initLimbo} = require('./controllers/rooms.js');
+initLimbo();
 
 // Middlewares
 app.use(express.json());

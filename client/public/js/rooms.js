@@ -1,12 +1,4 @@
-const createRoom = () => {
-    const newRoomName = document.getElementById("roomForm").newRoom.value;
 
-    if (newRoomName) {
-      socket.emit('new-room', newRoomName)
-      document.getElementById("roomForm").newRoom.value = '';
-     }
-    return false;
- }
 
 const joinRoom = (room) => {
     // Check if room other than current
@@ -18,6 +10,7 @@ const joinRoom = (room) => {
     // Update variables
     sessionStorage.roomName = room.roomName;
     sessionStorage.roomId = room.roomId;
+    
 
     // Change room name
     document.getElementById("roomName").innerHTML = `${room.roomName}`;
@@ -62,4 +55,17 @@ const displayRoom = (room) => {
 
 const displayRoomUsers = (room, users) => {
     document.getElementById(room.roomId).textContent = `${room.roomName} (${users.length})`
+}
+
+
+const createRoom = () => {
+    const newRoomName = document.getElementById("roomForm").newRoom.value;
+
+    if (newRoomName) {
+      socket.emit('new-room', newRoomName)
+      document.getElementById("roomForm").newRoom.value = '';
+      joinRoom(newRoomName);
+     } else {
+    return false;
+    }
 }

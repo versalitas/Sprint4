@@ -33,7 +33,8 @@ socket.on('connect', () => {
         }
         displayRoomUsers(room, users);
     })
-    
+
+
     // Retrieve room list 
     socket.emit('get-rooms');
 })
