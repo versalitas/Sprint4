@@ -81,8 +81,9 @@ ul,li {
 /* BUTTONS*/
 
 .button {
+    
     aspect-ratio:1;
-    display:block;
+    display: block;
     height: 2em;
     border: 0;
     border-radius: 50%;
@@ -92,10 +93,10 @@ ul,li {
     margin-left: 0.5rem;
     margin-right:0.5rem;
     cursor: pointer;
-    font-weight: 1200;
     
     
 }
+
 
 .button:hover {
    
